@@ -10,7 +10,8 @@ interface ContactModalProps {
 }
 
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  // Cambiamos a string para evitar errores de inferencia de TypeScript en el build
+  const [status, setStatus] = useState<string>('idle')
   const [formData, setFormData] = useState({ 
     name: '', 
     email: '', 
@@ -25,15 +26,13 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
     setStatus('loading')
 
-    // UNIFICAMOS EL PAYLOAD: Ahora es idéntico al de AuditoriaForm.tsx
     const payload = {
       name: formData.name,
       email: formData.email,
       telefono: formData.telefono,
-      apellidos: "(Desde Navbar)", // Para mantener la estructura del email
+      apellidos: "(Desde Navbar)",
       servicio: formData.servicio,
       web: "Solicitada vía Modal Navbar",
-      // El mensaje se formatea igual para que la plantilla lo trate igual
       message: `CONTACTO RÁPIDO: ${formData.message}`
     }
 
@@ -162,14 +161,13 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   <div className="relative group">
                     <button 
                       type="submit"
-                      disabled={(status as string) === 'loading' || (status as string) === 'success'}
+                      disabled={status === 'loading' || status === 'success'}
                       className={`relative w-full py-5 text-[10px] tracking-[0.4em] uppercase font-black transition-all duration-500 overflow-hidden rounded-full shadow-lg flex justify-center items-center ${
                         status === 'success' ? 'bg-[#00ff9d] text-black' : 
                         status === 'loading' ? 'bg-white/10 text-white border border-white/10' :
                         'bg-white text-black'
                       }`}
                     >
-                      {/* Texto con cambio de color automático vía Tailwind group-hover */}
                       <span className={`relative z-10 flex items-center gap-2 transition-colors duration-500 ${status === 'idle' ? 'group-hover:text-white' : ''}`}>
                         {status === 'loading' && <Loader2 className="animate-spin" size={14} />}
                         {status === 'loading' && 'Procesando...'}
