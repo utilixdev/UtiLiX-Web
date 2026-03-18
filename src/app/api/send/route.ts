@@ -38,7 +38,7 @@ export async function POST(req: Request) {
     await resend.emails.send({
       from: 'Utilix Intelligence <info@utilixstudio.com>',
       to: ['info@utilix.es'],
-      reply_to: finalEmail,
+      replyTo: finalEmail,
       subject: subjectAdmin, // Usamos el asunto dinámico citado
       html: renderEmailTemplate(finalName, apellidos, finalEmail, telefono, servicio, finalWeb, finalMessage, true)
     });
