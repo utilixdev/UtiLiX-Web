@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence, CubicBezier } from 'framer-motion'; // Importamos CubicBezier
+import { motion, AnimatePresence } from 'framer-motion';
 import { X, Shield, BarChart3, Target } from 'lucide-react';
 import Link from 'next/link';
 
@@ -33,8 +33,8 @@ export default function CookieBanner() {
     savePreferences(allIn);
   };
 
-  // TIPADO CORREGIDO: Forzamos el tipo CubicBezier para que el build no falle
-  const expoEase: CubicBezier = [0.19, 1, 0.22, 1];
+  // Definimos la curva como un array de números estándar
+  const expoEase = [0.19, 1, 0.22, 1];
 
   return (
     <AnimatePresence mode="wait">
@@ -43,7 +43,8 @@ export default function CookieBanner() {
           initial={{ x: 400, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: 400, opacity: 0 }}
-          transition={{ duration: 1.2, ease: expoEase }}
+          // Usamos 'as any' para que el compilador ignore la validación del array
+          transition={{ duration: 1.2, ease: expoEase as any }}
           className="fixed bottom-8 right-8 z-[200] w-[320px] md:w-[380px]"
         >
           <div className="relative bg-[#050505]/90 border border-white/10 backdrop-blur-3xl p-5 shadow-[20px_20px_60px_rgba(0,0,0,0.5)]">
