@@ -7,7 +7,13 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import ContactModal from '@/components/ContactModal'
 
-export default function Navbar() {
+// --- CORRECCIÓN: Definimos la interfaz para las props ---
+interface NavbarProps {
+  onOpenContact?: () => void;
+}
+
+// --- CORRECCIÓN: Recibimos onOpenContact como prop ---
+export default function Navbar({ onOpenContact }: NavbarProps) {
   const { scrollY } = useScroll()
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
@@ -61,9 +67,14 @@ export default function Navbar() {
   // Función unificada para abrir contacto y cerrar menú
   const triggerContact = () => {
     setIsOpen(false);
-    setTimeout(() => {
-      setIsContactOpen(true);
-    }, 300); // Pequeño delay para que la transición sea fluida
+    // Si existe la prop externa, la usamos; si no, usamos el estado interno
+    if (onOpenContact) {
+      onOpenContact();
+    } else {
+      setTimeout(() => {
+        setIsContactOpen(true);
+      }, 300);
+    }
   };
 
   return (
