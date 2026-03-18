@@ -109,7 +109,7 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.6, ease }}
+            transition={{ duration: 0.6, ease: ease as any }}
             className="fixed inset-0 bg-[#050505] z-[200] flex flex-col"
           >
             <div className="flex justify-between items-center px-6 py-6 md:px-12">
@@ -129,7 +129,7 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
                       key={item.name}
                       initial={{ x: -40, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
-                      transition={{ delay: i * 0.05, duration: 0.8, ease }}
+                      transition={{ delay: i * 0.05, duration: 0.8, ease: ease as any }}
                     >
                       <Link
                         href={item.href ?? '#'}
