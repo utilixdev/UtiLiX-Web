@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, CubicBezier } from 'framer-motion'; // Importamos CubicBezier
 import { X, Shield, BarChart3, Target } from 'lucide-react';
 import Link from 'next/link';
 
@@ -33,8 +33,8 @@ export default function CookieBanner() {
     savePreferences(allIn);
   };
 
-  // Easing unificado para evitar conflictos de steps(2)
-  const expoEase = [0.19, 1, 0.22, 1];
+  // TIPADO CORREGIDO: Forzamos el tipo CubicBezier para que el build no falle
+  const expoEase: CubicBezier = [0.19, 1, 0.22, 1];
 
   return (
     <AnimatePresence mode="wait">
