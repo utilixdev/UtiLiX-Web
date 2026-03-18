@@ -162,7 +162,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   <div className="relative group">
                     <button 
                       type="submit"
-                      disabled={status === 'loading' || status === 'success'}
+                      disabled={(status as string) === 'loading' || (status as string) === 'success'}
                       className={`relative w-full py-5 text-[10px] tracking-[0.4em] uppercase font-black transition-all duration-500 overflow-hidden rounded-full shadow-lg flex justify-center items-center ${
                         status === 'success' ? 'bg-[#00ff9d] text-black' : 
                         status === 'loading' ? 'bg-white/10 text-white border border-white/10' :
