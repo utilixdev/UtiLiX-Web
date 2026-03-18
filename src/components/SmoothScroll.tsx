@@ -1,11 +1,13 @@
 'use client';
+
+// @ts-ignore
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis';
 import { useEffect } from 'react';
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   
   // Opcional: Si necesitas controlar Lenis desde otros componentes
-  const lenis = useLenis(({ scroll }) => {
+  const lenis = useLenis(({ scroll }: any) => {
     // Aquí podrías ejecutar lógica basada en el valor del scroll
   });
 
