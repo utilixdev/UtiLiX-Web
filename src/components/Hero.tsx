@@ -51,8 +51,6 @@ export default function Hero() {
   if (!mounted) return <div className="min-h-screen bg-[#030303]" />;
 
   const expoEase = [0.19, 1, 0.22, 1];
-
-  // TEXTO MÁS SUAVE Y ENFOCADO EN RESULTADOS
   const descriptionText = "CREAMOS MARCAS QUE DOMINAN SU SECTOR POR SU IMPACTO VISUAL. DISEÑAMOS TU AUTORIDAD DESDE EL PRIMER SEGUNDO PARA QUE TU ÚNICA COMPETENCIA SEAS TÚ MISMO.";
 
   return (
@@ -61,8 +59,6 @@ export default function Hero() {
       className="relative w-full flex items-start justify-center bg-[#030303] overflow-hidden m-0 p-0"
       style={{ perspective: "1200px", minHeight: '100vh' }}
     >
-      
-      {/* VIDEO BACKGROUND */}
       <motion.div 
         style={{ opacity: opacityScroll }} 
         className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
@@ -80,14 +76,12 @@ export default function Hero() {
 
       <Particles />
 
-      {/* GLOW AMBIENTAL */}
       <div className="absolute inset-0 pointer-events-none z-10">
         <motion.div style={{ x: layer1X, y: layer1Y }} className="absolute top-0 -left-1/4 w-[55vw] h-[55vw] bg-utilix-violet/10 rounded-full blur-[160px]" />
         <motion.div style={{ x: layer2X, y: layer2Y }} className="absolute bottom-0 -right-1/4 w-[45vw] h-[45vw] bg-utilix-green/10 rounded-full blur-[140px]" />
         <motion.div style={{ x: layer3X, y: layer3Y }} className="absolute top-[40%] left-[35%] w-[30vw] h-[30vw] bg-white/5 rounded-full blur-[120px]" />
       </div>
 
-      {/* CONTENIDO PRINCIPAL */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -114,7 +108,7 @@ export default function Hero() {
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4, ease: expoEase }}
+          transition={{ duration: 1, delay: 0.4, ease: expoEase as any }}
           className="text-[clamp(2.2rem,8.5vw,8rem)] font-[1000] leading-[0.9] md:leading-[0.82] tracking-tighter uppercase text-white mb-10 md:mb-14" 
         >
           SÉ EL REFERENTE <br />
@@ -139,18 +133,16 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* BOTÓN DE ACCIÓN CORREGIDO */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 1.2 }}
           className="relative group"
         >
-          {/* Glow animado sin styled-jsx */}
           <div className="absolute -inset-[1px] bg-gradient-to-r from-utilix-violet via-white to-utilix-green rounded-none opacity-40 group-hover:opacity-100 blur-[2px] group-hover:blur-[4px] transition duration-500 animate-[gradient-slow_8s_ease_infinite] bg-[length:200%_200%]"></div>
           
           <motion.a
-            href="#auditoria" // Ahora apunta al ID correcto del formulario
+            href="#auditoria"
             whileHover="hover"
             whileTap={{ scale: 0.98 }}
             className="relative flex items-center justify-center bg-black text-white px-10 md:px-16 py-6 md:py-7 rounded-none font-black uppercase tracking-[0.5em] text-[10px] md:text-[13px] overflow-hidden transition-all"
@@ -162,12 +154,11 @@ export default function Hero() {
               variants={{ hover: { y: 0 } }}
               initial={{ y: "101%" }}
               className="absolute inset-0 bg-white"
-              transition={{ ease: expoEase, duration: 0.6 }}
+              transition={{ ease: expoEase as any, duration: 0.6 }}
             />
           </motion.a>
         </motion.div>
 
-        {/* TAGS INFERIORES */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.3 }}

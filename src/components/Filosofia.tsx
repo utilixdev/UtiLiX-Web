@@ -80,7 +80,6 @@ export default function Filosofia() {
         }}
         className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12" 
       >
-        {/* SUBHEAD */}
         <div className="mb-12 flex items-center gap-4 justify-center md:justify-start">
           <div className="h-[1px] w-12 bg-utilix-green/30 hidden md:block" />
           <span className="text-utilix-green/60 font-mono text-[10px] tracking-[0.6em] uppercase">
@@ -88,15 +87,13 @@ export default function Filosofia() {
           </span>
         </div>
 
-        {/* MAIN GRID */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
-          {/* LADO IZQUIERDO: TEXTO PRINCIPAL */}
           <div className="lg:col-span-8 flex flex-col justify-center">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 1.2, ease: expoEase }}
+              transition={{ duration: 1.2, ease: expoEase as any }}
               className="text-[clamp(1.8rem,5vw,4rem)] font-[950] leading-[0.9] tracking-tighter uppercase text-white/90 mb-4 italic"
             >
               <span className="block mb-4">TRANSFORMAMOS TU NOMBRE EN UN</span>
@@ -110,7 +107,7 @@ export default function Filosofia() {
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1, delay: 0.1, ease: expoEase }}
+                transition={{ duration: 1, delay: 0.1, ease: expoEase as any }}
                 className="text-lg md:text-xl text-white/50 font-light leading-relaxed"
               >
                 No buscamos que tu marca simplemente sea vista; buscamos que sea <strong className="text-white font-medium">respetada</strong>. Diseñamos para aquellos que entienden que el liderazgo comienza por una imagen que no deja lugar a dudas.
@@ -119,7 +116,7 @@ export default function Filosofia() {
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1, delay: 0.2, ease: expoEase }}
+                transition={{ duration: 1, delay: 0.2, ease: expoEase as any }}
                 className="text-lg md:text-xl text-white/50 font-light leading-relaxed"
               >
                 Tu autoridad digital no es un detalle, es tu <strong className="text-white font-medium">mayor activo</strong>. Creamos experiencias que separan a los referentes de los seguidores, proyectando exclusividad desde el primer impacto visual.
@@ -127,10 +124,8 @@ export default function Filosofia() {
             </div>
           </div>
 
-          {/* PANEL LATERAL: PROTOCOLO */}
           <div className="lg:col-span-4">
             <div className="h-full relative p-8 md:p-12 border border-white/5 bg-white/[0.01] backdrop-blur-sm flex flex-col justify-between">
-              {/* Línea animada lateral */}
               <motion.div
                 style={{ scaleY: scaleYLine, originY: 0 }}
                 className="absolute left-0 top-0 w-[2px] h-full bg-gradient-to-b from-utilix-violet via-utilix-green to-transparent"
@@ -182,7 +177,6 @@ export default function Filosofia() {
           </div>
         </div>
 
-        {/* CIERRE */}
         <div className="pt-24 md:pt-40 pb-0 text-center relative overflow-hidden">
           <span className="text-[clamp(1.5rem,8vw,8rem)] font-black text-white/[0.02] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none uppercase whitespace-nowrap">
             MARCAS DE ÉXITO
