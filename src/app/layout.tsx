@@ -10,28 +10,35 @@ const font = Montserrat({
   display: 'swap', 
 });
 
-// ESTRATEGIA DE DATOS ESTRUCTURADOS (JSON-LD) - El "ADN" para Google
+// ESTRATEGIA DE DATOS ESTRUCTURADOS (JSON-LD) - Local Business + National Scope
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "UtiLiX",
   "alternateName": "UtiLiX Digital Architecture",
-  "description": "Agencia boutique especializada en ingeniería digital de alta gama, diseño web de autor y performance SEO técnico.",
+  "description": "Estudio de ingeniería digital de alta gama en Vic (Osona). Expertos en diseño web de autor y software escalable para toda España.",
   "url": "https://utilix.es",
-  "logo": "https://utilix.es/logo.png", // Asegúrate de tener tu logo en public
+  "logo": "https://utilix.es/logo.png",
   "image": "https://utilix.es/og-image.jpg",
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "Barcelona",
-    "addressRegion": "Cataluña",
+    "streetAddress": "Carrer de Vic", // Puedes poner tu calle o dejarlo así
+    "addressLocality": "Vic",
+    "addressRegion": "Osona",
+    "postalCode": "08500",
     "addressCountry": "ES"
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": 41.3851,
-    "longitude": 2.1734
+    "latitude": 41.9301,
+    "longitude": 2.2549
   },
-  "telephone": "+34679958614",
+  "areaServed": [
+    { "@type": "City", "name": "Vic" },
+    { "@type": "State", "name": "Cataluña" },
+    { "@type": "Country", "name": "España" }
+  ],
+  "telephone": "+34711556444",
   "priceRange": "$$$",
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",
@@ -40,30 +47,32 @@ const jsonLd = {
     "closes": "19:00"
   },
   "knowsAbout": [
-    "Next.js Development",
-    "Core Web Vitals Optimization",
-    "High-End Web Design",
-    "Technical SEO",
-    "UX/UI Luxury Design"
+    "Next.js 16 Development",
+    "Core Web Vitals Performance",
+    "High-End Web Design Osona",
+    "Technical SEO España",
+    "UX/UI Luxury Architecture",
+    "Desarrollo de Software a medida en Vic"
   ]
 };
 
-// SEO DE ÉLITE 2026 - CONFIGURACIÓN AVANZADA
+// SEO DE ÉLITE - ENFOQUE LOCAL & NACIONAL
 export const metadata: Metadata = {
   title: {
-    default: "UtiLiX | Agencia de Desarrollo Web de Autor & Performance SEO",
+    default: "UtiLiX | Diseño Web de Autor en Vic & Ingeniería Digital Premium",
     template: "%s | UtiLiX" 
   },
-  description: "Expertos en ingeniería digital de alta gama. Diseño web de autor con Next.js, rendimiento Core Web Vitals 100 y estrategias de SEO técnico para marcas líderes.",
+  description: "Lideramos la innovación digital desde Vic (Osona). Especialistas en desarrollo web premium con Next.js y performance extrema para marcas que buscan destacar en toda España.",
   keywords: [
-    "Desarrollo web de autor", 
-    "Diseño web premium", 
-    "SEO técnico avanzado", 
-    "Next.js Boutique España", 
-    "UtiLiX",
+    "Diseño web Vic",
+    "Agencia digital Osona",
+    "Desarrollo web de autor España",
+    "Ingeniería digital premium",
+    "Next.js Developer Barcelona",
+    "UtiLiX Vic",
+    "Software a medida Osona",
     "Estrategia digital de lujo",
-    "Optimización Core Web Vitals",
-    "Agencia Next.js Barcelona"
+    "Optimización Core Web Vitals"
   ],
   metadataBase: new URL('https://utilix.es'),
   alternates: { 
@@ -71,14 +80,14 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "UtiLiX | Ingeniería Digital de Alta Gama",
-    description: "Webs de alto impacto con rendimiento extremo y diseño boutique.",
+    title: "UtiLiX | Arquitectura Digital de Alto Impacto",
+    description: "Webs de alto rendimiento y diseño boutique. De Vic al mundo.",
     images: ["/og-image.jpg"], 
     creator: "@utilix"
   },
   openGraph: {
-    title: "UtiLiX | Ingeniería Digital de Alta Gama",
-    description: "Webs que dominan el mercado. Rendimiento extremo y diseño impecable de autor.",
+    title: "UtiLiX | Ingeniería Digital en Vic & Diseño Premium",
+    description: "Elevamos marcas a través de tecnología de vanguardia y diseño de autor. Rendimiento 100/100 garantizado.",
     url: 'https://utilix.es',
     siteName: 'UtiLiX',
     locale: 'es_ES',
@@ -87,7 +96,7 @@ export const metadata: Metadata = {
       url: '/og-image.jpg', 
       width: 1200, 
       height: 630, 
-      alt: 'UtiLiX - Digital Luxury Architecture' 
+      alt: 'UtiLiX - Digital Luxury Architecture en Vic' 
     }],
   },
   robots: {
@@ -113,12 +122,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es" className={`scroll-smooth ${font.variable}`}>
       <head>
-        {/* Inyección de JSON-LD: Imprescindible para aparecer con snippets enriquecidos */}
+        {/* Schema.org - ADN para Google Search Console */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
+      {/* Usamos el componente cliente para manejar la lógica de fuentes y Providers */}
       <RootLayoutClient fontClassName={font.className}>
         {children}
       </RootLayoutClient>
