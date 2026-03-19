@@ -83,6 +83,9 @@ export const metadata: Metadata = {
   alternates: { 
     canonical: '/',
   },
+  verification: {
+    google: "yIHejNo5cuZMal9UM0wf-SjiwYnK6RBAIsZGFK7VLwY",
+  },
   twitter: {
     card: "summary_large_image",
     title: "UtiLiX | Ingeniería Digital y Estrategia de Captación",
