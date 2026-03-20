@@ -2,44 +2,44 @@
 
 import { useInView, motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
-import { Layout, Code, Server, Search, Wrench, Gauge } from "lucide-react";
+import { Layout, ShoppingBag, Wrench, Share2, MousePointer2, RefreshCcw } from "lucide-react";
 
 const SERVICES = [
   { 
     id: "01", 
-    title: "Identidad Visual Premium", 
-    desc: "Diseño de interfaces que dictan autoridad desde el primer segundo. Creamos experiencias donde la estética de lujo se funde con una navegación impecable.", 
+    title: "Web Corporativa & Landing Pages", 
+    desc: "Creación de sitios de alto impacto y landings de conversión. Rediseñamos y actualizamos tu presencia digital para situarte por encima de la competencia.", 
     icon: Layout 
   },
   { 
     id: "02", 
-    title: "Experiencia de Autor", 
-    desc: "Desarrollo a medida con un enfoque en la exclusividad. Creamos activos digitales únicos, refinados y optimizados para que tu marca no tenga competencia.", 
-    icon: Code 
+    title: "E-commerce & Tiendas Online", 
+    desc: "Desarrollo de tiendas en línea, sistemas de afiliación y catálogos autogestionables. Convertimos tu catálogo en una máquina de ventas 24/7.", 
+    icon: ShoppingBag 
   },
   { 
     id: "03", 
-    title: "Estructura de Poder", 
-    desc: "Sistemas robustos que sostienen tu crecimiento sin límites. Una base tecnológica invisible que garantiza seguridad absoluta y solvencia empresarial.", 
-    icon: Server 
-  },
-  { 
-    id: "04", 
-    title: "Dominio de Mercado", 
-    desc: "Estrategias de posicionamiento diseñadas para que tu marca no solo sea encontrada, sino que lidere su sector y atraiga al público de mayor valor.", 
-    icon: Search 
-  },
-  { 
-    id: "05", 
-    title: "Cuidado y Evolución", 
-    desc: "Acompañamiento proactivo para que tu activo digital mantenga siempre su estatus. Vigilancia constante para que nada interrumpa tu autoridad.", 
+    title: "Mantenimiento & Seguridad", 
+    desc: "Soporte técnico proactivo y actualizaciones críticas. Garantizamos que tu activo digital sea siempre seguro, rápido y esté online.", 
     icon: Wrench 
   },
   { 
+    id: "04", 
+    title: "Estrategia en Redes Sociales", 
+    desc: "Diseño de activos visuales y redacción de contenidos estratégicos. Conectamos tu marca con tu audiencia de mayor valor en Osona.", 
+    icon: Share2 
+  },
+  { 
+    id: "05", 
+    title: "Rediseño & Optimización", 
+    desc: "Transformamos webs obsoletas en plataformas de vanguardia. Mejoramos la velocidad y la experiencia de usuario para recuperar clientes perdidos.", 
+    icon: RefreshCcw 
+  },
+  { 
     id: "06", 
-    title: "Velocidad de Élite", 
-    desc: "Optimización extrema para una respuesta instantánea. La rapidez es el mayor lujo digital: eliminamos cualquier fricción entre tu marca y tu cliente.", 
-    icon: Gauge 
+    title: "Auditoría de Conversión", 
+    desc: "Análisis técnico de tu flujo de ventas. Detectamos dónde se escapan tus beneficios y trazamos la hoja de ruta para solucionarlo.", 
+    icon: MousePointer2 
   }
 ];
 
@@ -54,30 +54,27 @@ function ServiceCard({ service, index }: { service: any, index: number }) {
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.05, ease: "easeOut" }}
-      className="group relative py-12 md:py-20 px-10 bg-[#030303] border border-white/10 overflow-hidden"
+      className="group relative py-12 md:py-20 px-10 bg-[#030303] border border-white/5 overflow-hidden"
     >
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none bg-[radial-gradient(circle_at_50%_50%,rgba(139,92,246,0.05)_0%,transparent_70%)]" />
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none bg-[radial-gradient(circle_at_0%_0%,rgba(0,255,157,0.03)_0%,transparent_70%)]" />
       <div className="relative z-10 h-full flex flex-col">
-        <div className={`mb-6 w-12 h-12 flex items-center justify-center rounded-sm border transition-all duration-700
+        <div className={`mb-6 w-10 h-10 flex items-center justify-center rounded-none border transition-all duration-700
           ${isInView ? 'bg-white/5 border-utilix-green/30 text-utilix-green' : 'bg-transparent border-white/5 text-white/20'}
           group-hover:border-utilix-green group-hover:bg-utilix-green/5 group-hover:text-utilix-green`}
         >
-          <Icon size={20} strokeWidth={1} />
+          <Icon size={18} strokeWidth={1} />
         </div>
-        <h3 className="text-xl font-black text-white uppercase tracking-[0.1em] mb-4 leading-none transition-colors duration-300 group-hover:text-white">
+        <h3 className="text-lg font-bold text-white uppercase tracking-widest mb-4 leading-none transition-colors duration-300">
           {service.title}
         </h3>
-        <p className="text-white/60 text-sm leading-relaxed mb-10 font-light tracking-wide transition-colors duration-300 group-hover:text-white/80">
+        <p className="text-white/50 text-sm leading-relaxed mb-10 font-light tracking-wide group-hover:text-white/80 transition-colors">
           {service.desc}
         </p>
         <div className="mt-auto flex items-center justify-between border-t border-white/5 pt-6">
-          <span className="text-[8px] font-mono text-white/20 tracking-[0.5em] uppercase group-hover:text-utilix-green transition-colors">
-            PROTOCOL_{service.id}
+          <span className="text-[7px] font-mono text-white/20 tracking-[0.5em] uppercase">
+            SERVICE_ASSET_{service.id}
           </span>
-          <div className="flex gap-1.5">
-            <div className={`w-[3px] h-[3px] rounded-full bg-utilix-green transition-all duration-1000 ${isInView ? 'opacity-100' : 'opacity-0'} shadow-[0_0_8px_#00ff9d]`} />
-            <div className="w-[3px] h-[3px] rounded-full bg-white/10" />
-          </div>
+          <div className="w-1 h-1 bg-utilix-green shadow-[0_0_8px_#00ff9d]" />
         </div>
       </div>
     </motion.div>
@@ -93,45 +90,73 @@ export default function ServicesGrid() {
   return (
     <section
       id="services"
-      className="relative pt-0 pb-0 px-2 md:px-8 bg-[#030303] overflow-visible z-40 mt-[-35vh] md:mt-[-45vh]"
+      className="relative pt-0 pb-32 px-2 md:px-8 bg-[#030303] z-40 mt-[-35vh] md:mt-[-45vh]"
     >
-      <div className="max-w-screen-2xl mx-auto w-full pt-0 pb-0">
+      <div className="max-w-screen-2xl mx-auto w-full">
 
-        <div className="flex flex-col items-start mb-12 md:mb-20">
+        <div className="flex flex-col items-start mb-16 md:mb-24">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="flex items-center gap-3 mb-4"
+            className="flex items-center gap-3 mb-6"
           >
-            <div className="w-12 h-[1px] bg-utilix-green/30" />
-            <span className="text-utilix-green font-mono text-[9px] tracking-[0.6em] uppercase">
-              Ecosistema de Ejecución
+            <div className="w-8 h-[1px] bg-utilix-green" />
+            <span className="text-utilix-green font-mono text-[10px] tracking-[0.4em] uppercase">
+              Catálogo de Activos Digitales
             </span>
           </motion.div>
 
-          <h2 className="text-[clamp(1.8rem,5vw,4rem)] font-[950] leading-[0.9] tracking-tighter uppercase text-white/90 mb-4 italic">
+          <h2 className="text-[clamp(2rem,6vw,4.5rem)] font-black leading-[0.85] tracking-[-0.04em] uppercase text-white mb-6">
             SOLUCIONES <br/>
-            <span className="italic font-extralight text-transparent bg-clip-text bg-gradient-to-r from-utilix-violet via-white to-utilix-green bg-[length:200%_200%] animate-[gradient-slow_8s_ease_infinite] py-2 inline-block">
-              DE ALTA GAMA.
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-utilix-green via-white to-utilix-violet bg-[length:200%_200%] animate-gradient-slow">
+              DE ALTO IMPACTO.
             </span>
           </h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-xl text-white/40 text-lg md:text-xl font-light leading-snug tracking-tight italic"
-          >
-            Diseñamos el estándar de las marcas que no aceptan el promedio. <span className="text-white">Diferenciación radical</span> en cada píxel.
-          </motion.p>
+          <p className="max-w-2xl text-white/40 text-lg font-light leading-relaxed">
+            Especialistas en la creación y mantenimiento de ecosistemas web en <span className="text-white">Vic y toda Osona</span>. Transformamos tecnología en rentabilidad.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 bg-[#030303] border border-white/5 overflow-hidden rounded-3xl md:rounded-[3rem]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-white/10 bg-[#030303]">
           {SERVICES.map((s, i) => (
             <ServiceCard key={s.id} service={s} index={i} />
           ))}
         </div>
+
+        {/* --- BOTÓN ESTILO UTILIX (CUADRADO Y AGRESIVO) --- */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-20 flex flex-col items-center"
+        >
+          <div className="relative group">
+            <button 
+              onClick={() => {
+                const contactSection = document.getElementById('auditoria');
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="relative px-10 py-6 bg-utilix-green text-black font-black uppercase tracking-tighter text-xl transition-all duration-300 hover:bg-white hover:scale-[1.02] active:scale-[0.98]"
+            >
+              Solicitar Auditoría Gratuita Osona
+              {/* Decoración geométrica en las esquinas */}
+              <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-black/20" />
+              <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-black/20" />
+            </button>
+            
+            {/* Sombra de apoyo / Marco exterior */}
+            <div className="absolute -bottom-2 -right-2 w-full h-full border border-utilix-green/30 -z-10 transition-transform group-hover:translate-x-1 group-hover:translate-y-1" />
+          </div>
+
+          <span className="mt-8 font-mono text-[9px] text-white/30 tracking-[0.5em] uppercase">
+            [ Análisis de rendimiento sin coste · Plazas limitadas ]
+          </span>
+        </motion.div>
+
       </div>
 
       <style jsx global>{`

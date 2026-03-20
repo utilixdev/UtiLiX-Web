@@ -2,255 +2,263 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Cpu, Target, Eye, Boxes, ArrowUpRight, Shield, Zap, Binary } from 'lucide-react';
+import { Cpu, Target, Eye, ArrowUpRight, Zap } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
-// Componente para el efecto de desaparición al hacer scroll (Parallax Inverso)
+const expoEase = [0.19, 1, 0.22, 1];
+
+// --- COMPONENTE AUDITORIA FORM INTEGRADO ---
+function AuditoriaForm() {
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const inputStyle = "w-full bg-transparent border-b border-white/10 py-2 text-[#00ff9d] focus:outline-none focus:border-[#00ff9d] transition-colors duration-500 placeholder:text-white/10 font-medium tracking-widest uppercase text-sm";
+  const labelStyle = "block text-[9px] uppercase tracking-[0.4em] text-[#00ff9d]/70 mb-1 font-bold";
+  const selectIcon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2300ff9d'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='1' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E";
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (status === 'loading' || status === 'success') return;
+    setStatus('loading');
+    
+    const formData = new FormData(e.currentTarget);
+    const rawData = Object.fromEntries(formData);
+    const payload = {
+      name: rawData.nombre,
+      email: rawData.email,
+      telefono: rawData.telefono,
+      apellidos: rawData.apellidos || "",
+      servicio: rawData.servicio,
+      web: rawData.web || "No proporcionada",
+      message: `SOLICITUD DESDE FILOSOFÍA: El cliente requiere "${rawData.servicio}". Web: ${rawData.web || "N/A"}.`
+    };
+
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (response.ok) {
+        setStatus('success');
+        (e.target as HTMLFormElement).reset();
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 4000);
+      }
+    } catch {
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 4000);
+    }
+  };
+
+  return (
+    <section id="auditoria" className="relative py-12 px-6 bg-[#030303] overflow-hidden scroll-mt-12">
+      <div className="max-w-4xl mx-auto relative z-10">
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center mb-8">
+          <h2 className="text-[clamp(1.8rem,5vw,4rem)] font-[950] leading-[0.9] tracking-tighter uppercase text-white/90 mb-2 italic">
+            Hablemos de <br />
+            <span className="italic font-light text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-white to-emerald-400 bg-[length:200%_200%] animate-[gradient_8s_ease_infinite]">tu negocio.</span>
+          </h2>
+          <p className="text-white/40 font-medium text-[10px] md:text-xs tracking-[0.3em] uppercase max-w-xl mx-auto leading-relaxed">
+            Analizaremos tu situación actual para decirte exactamente cómo pasar al siguiente nivel.
+          </p>
+        </motion.div>
+
+        <motion.form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+          <div className="relative"><label className={labelStyle}>Nombre *</label><input name="nombre" type="text" placeholder="Ej: Dr. García" className={inputStyle} required /></div>
+          <div className="relative"><label className={labelStyle}>Apellidos</label><input name="apellidos" type="text" placeholder="Tus apellidos" className={inputStyle} /></div>
+          <div className="relative"><label className={labelStyle}>Email de contacto *</label><input name="email" type="email" placeholder="clinica@ejemplo.com" className={inputStyle} required /></div>
+          <div className="relative"><label className={labelStyle}>Teléfono *</label><input name="telefono" type="tel" placeholder="600 000 000" className={inputStyle} required /></div>
+          <div className="relative md:col-span-2">
+            <label className={labelStyle}>¿En qué podemos ayudarte?</label>
+            <select name="servicio" required className={`${inputStyle} appearance-none cursor-pointer font-bold w-full pr-10`} style={{ backgroundImage: `url("${selectIcon}")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 0.5rem center', backgroundSize: '1.2em' }}>
+              <option value="" className="bg-black text-white/30 italic text-xs">Selecciona una opción</option>
+              <option value="Imagen y Autoridad" className="bg-black text-white">Mejorar mi imagen y ganar autoridad</option>
+              <option value="Web" className="bg-black text-white">Nueva página web (más moderna y rápida)</option>
+              <option value="Plan Completo" className="bg-black text-white">Plan completo: Imagen + Web + Captación</option>
+            </select>
+          </div>
+          <div className="relative md:col-span-2"><label className={labelStyle}>Web actual (si tienes)</label><input name="web" type="url" placeholder="www.tuclinica.com" className={inputStyle} /></div>
+          <div className="md:col-span-2 pt-4 flex justify-center">
+            <div className="relative group w-full md:w-auto">
+              <div className={`absolute -inset-[1px] rounded-none transition duration-500 blur-[4px] ${status === 'success' ? 'bg-[#00ff9d] opacity-100' : 'bg-gradient-to-r from-purple-500 via-white to-emerald-400 opacity-20 group-hover:opacity-100 animate-[gradient_8s_ease_infinite] bg-[length:200%_200%]'}`} />
+              <button type="submit" disabled={status === 'loading' || status === 'success'} className={`relative px-20 py-5 rounded-none font-black uppercase tracking-[0.5em] text-[11px] w-full md:w-auto transition-all duration-500 overflow-hidden ${status === 'success' ? 'bg-[#00ff9d] text-black' : status === 'loading' ? 'bg-white/10 text-white border border-white/20' : 'bg-white text-black'}`}>
+                <span className={`relative z-10 block transition-colors duration-500 ${status === 'idle' ? 'group-hover:text-white' : ''}`}>
+                  {status === 'loading' ? 'Enviando Protocolo...' : status === 'success' ? '✓ Transmisión Éxito' : status === 'error' ? 'Error - Reintentar' : 'Solicitar Auditoría'}
+                </span>
+                {status === 'idle' && <div className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.19,1,0.22,1]" />}
+              </button>
+            </div>
+          </div>
+        </motion.form>
+      </div>
+    </section>
+  );
+}
+
+// --- HELPER COMPONENTS ---
 const ScrollSection = ({ children, scrollYProgress, range }: { children: React.ReactNode, scrollYProgress: any, range: [number, number] }) => {
   const opacity = useTransform(scrollYProgress, range, [1, 0]);
-  const scale = useTransform(scrollYProgress, range, [1, 0.95]);
-  const blur = useTransform(scrollYProgress, range, [0, 4]);
+  const y = useTransform(scrollYProgress, range, [0, -40]);
+  const scale = useTransform(scrollYProgress, range, [1, 0.99]);
   
-  return (
-    <motion.section style={{ opacity, scale, filter: `blur(${blur}px)` }} className="relative w-full overflow-hidden">
-      {children}
-    </motion.section>
-  );
+  return <motion.section style={{ opacity, scale, y }} className="relative w-full overflow-hidden">{children}</motion.section>;
 };
 
-// Revelado suave para evitar saltos en móvil
-const SmoothReveal = ({ children, delay = 0 }: { children: React.ReactNode, delay?: number }) => {
-  return (
-    <motion.div
-      initial={{ y: 20, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      viewport={{ once: true, margin: "-10%" }}
-      transition={{ duration: 1, delay, ease: [0.19, 1, 0.22, 1] }}
-      className="w-full"
-    >
-      {children}
-    </motion.div>
-  );
-};
-
+// --- PÁGINA PRINCIPAL ---
 export default function FilosofiaPage() {
   const [isHydrated, setIsHydrated] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: isHydrated ? containerRef : undefined, offset: ["start start", "end end"] });
 
-  const { scrollYProgress } = useScroll({
-    target: isHydrated ? containerRef : undefined,
-    offset: ["start start", "end end"]
-  });
+  useEffect(() => { setIsHydrated(true); }, []);
 
-  useEffect(() => {
-    setIsHydrated(true);
-  }, []);
+  const scrollToAudit = () => {
+    const section = document.getElementById('auditoria');
+    section?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   if (!isHydrated) return <div className="bg-[#030303] min-h-screen" />;
 
   return (
     <div ref={containerRef} className="bg-[#030303] text-white selection:bg-utilix-green selection:text-black min-h-screen">
       <Navbar />
-
       <main className="relative w-full">
         
-        {/* 1. HERO - PEGADO AL NAVBAR */}
+        {/* 1. HERO */}
         <ScrollSection scrollYProgress={scrollYProgress} range={[0, 0.2]}>
-          <div className="relative min-h-[85svh] flex flex-col justify-center px-6 pt-20">
-            {/* Background Decor */}
-            <div className="absolute inset-0 pointer-events-none">
-              <div className="absolute top-[10%] right-[-5%] w-[500px] h-[500px] bg-utilix-violet/10 blur-[150px] rounded-full" />
-              <div className="absolute bottom-[10%] left-[-5%] w-[400px] h-[400px] bg-utilix-green/5 blur-[120px] rounded-full" />
-            </div>
-
+          <div className="relative min-h-[70svh] flex flex-col justify-center px-6 pt-24 md:pt-32 pb-0">
             <div className="max-w-6xl mx-auto w-full relative z-10 text-center md:text-left">
               <motion.div 
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="mb-8 inline-block"
+                initial={{ opacity: 0, x: -40 }} 
+                animate={{ opacity: 1, x: 0 }} 
+                transition={{ duration: 1, ease: expoEase as any }}
+                className="mb-4 inline-block"
               >
-                <span className="text-utilix-green font-mono text-[10px] tracking-[0.8em] uppercase border-l border-utilix-green/30 pl-4">
-                  Core_Manifesto_v2
-                </span>
+                <span className="text-utilix-green font-mono text-[10px] tracking-[0.8em] uppercase border-l border-utilix-green/30 pl-4">01 // EL ESTÁNDAR UTILIX</span>
               </motion.div>
               
               <motion.h1 
-                initial={{ y: 40, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                className="text-[clamp(2.5rem,10vw,8rem)] font-[1000] leading-[0.85] tracking-tighter uppercase italic mb-10"
+                initial={{ opacity: 0, y: 30 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ duration: 1, delay: 0.3, ease: expoEase as any }} 
+                className="text-[clamp(2.2rem,8.5vw,8rem)] font-[1000] leading-[0.85] tracking-tighter uppercase text-white mb-10 md:mb-12"
               >
-                LA ÉTICA DEL <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-utilix-violet via-white to-utilix-green bg-[length:200%_auto] animate-gradient-slow block">
-                  RENDIMIENTO.
-                </span>
+                SÉ EL REFERENTE <br />
+                <span className="italic font-light text-transparent bg-clip-text bg-gradient-to-r from-utilix-violet via-white to-utilix-green bg-[length:200%_200%] animate-[gradient_slow_8s_ease_infinite]">DE TU SECTOR.</span>
               </motion.h1>
 
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-end">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.6, ease: expoEase as any }}
+                className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end"
+              >
                 <div className="md:col-span-8">
-                  <p className="text-xl md:text-3xl font-light italic text-white/40 leading-tight">
-                    En una era de ruido digital masivo, la <span className="text-white">precisión técnica</span> es el único activo que garantiza la autoridad absoluta. No diseñamos para complacer, construimos para dominar el mercado.
+                  <p className="text-xl md:text-2xl font-light italic text-white/40 leading-tight">
+                    La mayoría de empresas tienen webs que solo "están ahí". Nosotros creamos <span className="text-white">herramientas de captación</span> diseñadas para una sola cosa: que el cliente te elija a ti antes de haber hablado contigo.
                   </p>
                 </div>
-                <div className="md:col-span-4 flex flex-col items-center md:items-end">
-                  <div className="text-[10px] font-mono text-white/20 tracking-widest uppercase mb-4 text-center md:text-right">
-                    [ Engineering_Standards_2026 ]<br/>
-                    [ High_Impact_Software ]
-                  </div>
-                  <div className="h-[1px] w-20 bg-utilix-green/30 hidden md:block" />
-                </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </ScrollSection>
 
-        {/* 2. THE VISION - SIN ESPACIO MUERTO */}
+        {/* 2. LA DIFERENCIA */}
         <ScrollSection scrollYProgress={scrollYProgress} range={[0.2, 0.45]}>
-          <div className="py-24 px-6 bg-[#050505] border-y border-white/5">
-            <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-              <div className="lg:col-span-6">
-                <SmoothReveal>
-                  <h2 className="text-[11px] font-black uppercase tracking-[0.6em] text-utilix-violet mb-6 flex items-center gap-4">
-                    <span className="w-8 h-[1px] bg-utilix-violet/50" /> 01 // VISIÓN
-                  </h2>
-                  <h3 className="text-5xl md:text-7xl font-[1000] italic uppercase leading-none tracking-tighter mb-10">
-                    REDUCCIÓN <br /> <span className="text-white/20">RADICAL.</span>
-                  </h3>
-                  <div className="space-y-6 text-lg md:text-xl text-white/60 leading-relaxed font-light italic">
-                    <p>
-                      Rechazamos la ornamentación vacía. Cada línea de código que escribimos debe justificar su existencia mediante un aumento medible en la <span className="text-white">velocidad de conversión</span>.
-                    </p>
-                    <p className="text-base text-white/30">
-                      Nuestra filosofía se basa en la destilación: eliminamos la fricción tecnológica para que el mensaje de nuestros clientes impacte con la fuerza de un estándar industrial.
-                    </p>
-                  </div>
-                  <div className="flex flex-wrap gap-4 mt-10">
-                    {['Performance_First', 'Zero_Legacy', 'Clean_Logic'].map(tag => (
-                      <span key={tag} className="px-5 py-2 border border-white/10 rounded-full font-mono text-[9px] uppercase tracking-widest text-utilix-green/70 bg-utilix-green/5">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </SmoothReveal>
-              </div>
-              
-              <div className="lg:col-span-6 relative">
-                <SmoothReveal delay={0.2}>
-                  <div className="relative group rounded-[40px] overflow-hidden border border-white/10 aspect-square">
-                    <motion.div 
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 1.5 }}
-                      className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964')] bg-cover bg-center grayscale contrast-125 opacity-40 group-hover:opacity-60 transition-opacity" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Binary size={100} className="text-white/5 stroke-[0.5]" />
-                    </div>
-                  </div>
-                </SmoothReveal>
-              </div>
+          <div className="py-4 md:py-8 px-6 bg-[#050505] border-y border-white/5">
+            <div className="max-w-6xl mx-auto">
+              <motion.div 
+                initial={{ opacity: 0, x: 40 }} 
+                whileInView={{ opacity: 1, x: 0 }} 
+                viewport={{ once: true }} 
+                transition={{ duration: 1, ease: expoEase as any }}
+                className="w-full"
+              >
+                <span className="text-[11px] font-black uppercase tracking-[0.6em] text-utilix-violet mb-4 flex items-center gap-4">
+                  <span className="w-8 h-[1px] bg-utilix-violet/50" /> 02 // NUESTRO COMPROMISO
+                </span>
+              </motion.div>
+
+              <motion.h2 
+                initial={{ opacity: 0, y: 30 }} 
+                whileInView={{ opacity: 1, y: 0 }} 
+                viewport={{ once: true }} 
+                transition={{ duration: 1, delay: 0.3, ease: expoEase as any }} 
+                className="text-[clamp(1.8rem,5vw,4rem)] font-[900] leading-[0.9] tracking-tighter uppercase text-white/90 mb-4 italic"
+              >
+                <span className="block mb-2">TRANSFORMAMOS TU NOMBRE </span>
+                <span className="relative inline-block italic font-light text-transparent bg-clip-text bg-gradient-to-r from-utilix-violet via-white to-utilix-green bg-[length:200%_200%] animate-[gradient-slow_8s_ease_infinite] pb-1">EN UNA MARCA.</span>
+              </motion.h2>
+
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: 0.6, ease: expoEase as any }}
+                className="max-w-3xl space-y-4 text-lg text-white/60 leading-relaxed font-light italic"
+              >
+                <p>Si tu presencia digital no proyecta el valor real de lo que vendes, estás regalando dinero a tu competencia. No buscamos que tu web sea "la más bonita", buscamos que sea <span className="text-white">la que más confianza genere</span> para cerrar ventas más grandes.</p>
+              </motion.div>
             </div>
           </div>
         </ScrollSection>
 
-        {/* 3. CTA ESTRATÉGICO - PUENTE DE CONVERSIÓN */}
-        <div className="py-20 px-6">
-          <SmoothReveal>
-            <div className="max-w-6xl mx-auto p-12 md:p-20 rounded-[50px] bg-[#080808] border border-white/5 relative overflow-hidden group">
-              <div className="absolute top-0 right-0 p-10 opacity-10 group-hover:opacity-30 transition-opacity">
-                <Zap size={120} className="text-utilix-green" />
-              </div>
-              <div className="relative z-10 max-w-2xl">
-                <h4 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter mb-6">
-                  ¿Tu infraestructura <br /> está a la altura de tu ambición?
-                </h4>
-                <p className="text-white/40 text-lg mb-10 font-light">
-                  No permitas que una arquitectura mediocre limite tu crecimiento. Realizamos auditorías de rendimiento para proyectos que exigen la perfección.
-                </p>
-                <button className="group flex items-center gap-6 px-10 py-6 bg-white text-black rounded-full font-black text-[11px] uppercase tracking-[0.4em] hover:bg-utilix-green hover:text-white transition-all duration-500 shadow-2xl">
-                  AUDITAR MI PROYECTO <ArrowUpRight size={20} className="group-hover:rotate-45 transition-transform duration-500" />
-                </button>
-              </div>
+        {/* 3. CTA INTERMEDIO */}
+        <div className="py-2 px-6">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: expoEase as any }}
+            className="max-w-6xl mx-auto p-8 md:p-12 bg-[#080808] border border-white/5 relative overflow-hidden group"
+          >
+            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-30 transition-opacity"><Zap size={100} className="text-utilix-green" /></div>
+            <div className="relative z-10 max-w-2xl">
+              <h3 className="text-2xl md:text-4xl font-black italic uppercase tracking-tighter mb-4">¿ESTÁS PERDIENDO <br /> CLIENTES POR TU WEB?</h3>
+              <p className="text-white/40 text-lg mb-6 font-light italic">Una web lenta o con un diseño mediocre es un comercial que no sabe hablar. Vamos a encontrar los errores que están frenando tu crecimiento.</p>
+              <button onClick={scrollToAudit} className="group flex items-center gap-4 px-8 py-5 bg-white text-black font-black text-[10px] uppercase tracking-[0.4em] hover:bg-utilix-green transition-all duration-500">
+                AUDITAR MI NEGOCIO <ArrowUpRight size={18} className="group-hover:rotate-45 transition-transform duration-500" />
+              </button>
             </div>
-          </SmoothReveal>
+          </motion.div>
         </div>
 
-        {/* 4. THE TRIAD - TARJETAS COMPACTAS */}
+        {/* 4. LOS TRES PILARES */}
         <ScrollSection scrollYProgress={scrollYProgress} range={[0.55, 0.85]}>
-          <div className="py-24 px-6 bg-gradient-to-b from-transparent to-[#050505]">
+          <div className="py-4 md:py-8 px-6">
             <div className="max-w-7xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                 {[
-                  { 
-                    icon: <Cpu size={32} />, 
-                    title: "Rigurosidad", 
-                    color: "text-utilix-violet", 
-                    desc: "La latencia es el enemigo de la autoridad. Implementamos arquitecturas de carga ultra-rápida donde cada milisegundo está optimizado para la retención del usuario." 
-                  },
-                  { 
-                    icon: <Eye size={32} />, 
-                    title: "Vanguardia", 
-                    color: "text-utilix-green", 
-                    desc: "Diseño cinematográfico aplicado a interfaces comerciales. Creamos una narrativa visual que posiciona tu marca en el 1% del mercado global." 
-                  },
-                  { 
-                    icon: <Target size={32} />, 
-                    title: "Resultados", 
-                    color: "text-white", 
-                    desc: "La tecnología es un medio, no un fin. Cada línea de código está subordinada al retorno de inversión y a la solidez técnica a largo plazo." 
-                  }
+                  { icon: <Cpu size={28} />, title: "Fiabilidad", color: "text-utilix-violet", desc: "Tu negocio no se detiene, tu web tampoco. Creamos sistemas robustos que funcionan siempre." },
+                  { icon: <Eye size={28} />, title: "Status", color: "text-utilix-green", desc: "En el mundo digital, lo que parece es lo que es. Posicionamos tu marca con estética de alto nivel." },
+                  { icon: <Target size={28} />, title: "Conversión", color: "text-white", desc: "Diseñamos pensando en la psicología de tu cliente. Eliminamos los obstáculos hacia el contacto." }
                 ].map((item, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1, duration: 0.8 }}
-                    className="p-10 md:p-14 rounded-[50px] bg-white/[0.02] border border-white/5 hover:border-utilix-green/20 hover:bg-white/[0.04] transition-all duration-500"
-                  >
-                    <div className={`${item.color} mb-10 group-hover:scale-110 transition-transform`}>{item.icon}</div>
-                    <h4 className="text-3xl font-[1000] italic uppercase mb-6 tracking-tighter">{item.title}</h4>
-                    <p className="text-white/40 text-sm md:text-base leading-relaxed font-light">{item.desc}</p>
-                  </motion.div>
+                  <div key={i} className="p-8 md:p-10 bg-white/[0.02] border border-white/5 hover:border-utilix-green/20 transition-all duration-500">
+                    <div className={`${item.color} mb-4`}>{item.icon}</div>
+                    <h3 className="text-2xl font-[1000] italic uppercase mb-2 tracking-tighter">{item.title}</h3>
+                    <p className="text-white/40 text-sm leading-relaxed font-light italic">{item.desc}</p>
+                  </div>
                 ))}
               </div>
             </div>
           </div>
         </ScrollSection>
 
-        {/* 5. FINAL CTA */}
-        <ScrollSection scrollYProgress={scrollYProgress} range={[0.85, 1]}>
-          <div className="py-32 md:py-48 px-6 text-center relative overflow-hidden">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[800px] h-[400px] bg-utilix-green/5 blur-[150px] rounded-full -z-10" />
-            <SmoothReveal>
-              <h2 className="text-6xl md:text-[10rem] font-[1000] italic uppercase tracking-tighter leading-[0.85] mb-16">
-                ¿LISTO PARA <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-utilix-green to-white">DOMINAR?</span>
-              </h2>
-              <div className="flex flex-col md:flex-row justify-center items-center gap-8">
-                <button className="w-full md:w-auto px-16 py-8 bg-white text-black font-black text-[12px] uppercase tracking-[0.5em] rounded-full hover:bg-utilix-green hover:text-white transition-all duration-500 shadow-[0_0_50px_rgba(255,255,255,0.1)]">
-                  INICIAR_DIAGNÓSTICO
-                </button>
-                <button className="text-[11px] font-mono text-white/30 hover:text-white uppercase tracking-[0.8em] transition-colors border-b border-white/10 pb-2">
-                  Ver_Casos_Estudio
-                </button>
-              </div>
-            </SmoothReveal>
-          </div>
-        </ScrollSection>
-      </main>
+        {/* 5. AUDITORÍA FORM */}
+        <AuditoriaForm />
 
+      </main>
       <Footer />
 
       <style jsx global>{`
-        @keyframes gradient-slow {
-          0% { background-position: 0% 50% }
-          50% { background-position: 100% 50% }
-          100% { background-position: 0% 50% }
-        }
-        .animate-gradient-slow {
-          animation: gradient-slow 8s ease infinite;
-        }
-        body { overflow-x: hidden; background: #030303; }
+        @keyframes gradient-slow { 0% { background-position: 0% 50% } 50% { background-position: 100% 50% } 100% { background-position: 0% 50% } }
+        @keyframes gradient { 0% { background-position: 0% 50% } 50% { background-position: 100% 50% } 100% { background-position: 0% 50% } }
+        .animate-gradient-slow { animation: gradient-slow 8s ease infinite; }
+        body { overflow-x: hidden; background: #030303; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
       `}</style>
     </div>
   );

@@ -10,13 +10,13 @@ const font = Montserrat({
   display: 'swap', 
 });
 
-// ESTRATEGIA DE DATOS ESTRUCTURADOS (JSON-LD)
+// ESTRATEGIA DE DATOS ESTRUCTURADOS (JSON-LD) - OPTIMIZADA OSONA
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "UtiLiX",
-  "alternateName": "UtiLiX Digital Architecture",
-  "description": "Estudio de ingeniería digital en Vic. Especialistas en captación de clientes mediante diseño web de autor, e-commerce y auditorías de rendimiento para toda España.",
+  "alternateName": ["UtiLiX Digital Architecture", "UtiLiX Disseny Web Vic"],
+  "description": "Estudi d'enginyeria digital a Vic. Especialistes en captació de clients, disseny web d'autor, e-commerce i auditories de rendiment a Osona i tota Espanya.",
   "url": "https://utilix.es",
   "logo": "https://utilix.es/logo.png",
   "image": "https://utilix.es/og-image.jpg",
@@ -35,7 +35,11 @@ const jsonLd = {
   },
   "areaServed": [
     { "@type": "City", "name": "Vic" },
-    { "@type": "State", "name": "Cataluña" },
+    { "@type": "AdministrativeArea", "name": "Osona" },
+    { "@type": "City", "name": "Manlleu" },
+    { "@type": "City", "name": "Tona" },
+    { "@type": "City", "name": "Torelló" },
+    { "@type": "State", "name": "Catalunya" },
     { "@type": "Country", "name": "España" }
   ],
   "telephone": "+34711556444",
@@ -48,24 +52,30 @@ const jsonLd = {
   },
   "knowsAbout": [
     "Auditoría de Captación Digital",
+    "Disseny Web Vic i Osona",
     "Next.js 16 Development",
     "Tiendas Online E-commerce",
     "Diseño Web Corporativo",
     "Estrategias de Conversión",
     "High-End Web Design Osona",
     "Technical SEO España",
+    "Pàgines web a mida",
     "Desarrollo de Software a medida en Vic"
   ]
 };
 
 export const metadata: Metadata = {
   title: {
-    default: "UtiLiX | Diseño Web en Vic & Auditoría de Captación Digital",
+    // Título de impacto: Ataca la búsqueda local + el beneficio inmediato
+    default: "Diseño Web en Vic y Osona | Auditoría de Captación | UtiLiX",
     template: "%s | UtiLiX" 
   },
-  description: "Ingeniería digital de autor en Vic (Osona). No solo creamos webs premium con Next.js, desbloqueamos tu captación de clientes con auditorías gratuitas y hojas de ruta estratégicas para toda España.",
+  // Descripción enfocada a convertir el clic: Solución + Proximidad + Gancho
+  description: "Estudio de ingeniería digital en Vic y Osona. No solo diseñamos webs premium; desbloqueamos tu captación de clientes con auditorías de rendimiento reales. Disseny web a mida per a empreses que busquen resultats.",
   keywords: [
     "Diseño web Vic",
+    "Disseny web Vic",
+    "Pàgines web Osona",
     "Auditoría digital gratuita Osona",
     "Captación de clientes online",
     "Crear tienda online Vic",
@@ -82,20 +92,24 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://utilix.es'),
   alternates: { 
     canonical: '/',
+    languages: {
+      'es-ES': '/es',
+      'ca-ES': '/ca',
+    },
   },
   verification: {
     google: "yIHejNo5cuZMal9UM0wf-SjiwYnK6RBAIsZGFK7VLwY",
   },
   twitter: {
     card: "summary_large_image",
-    title: "UtiLiX | Ingeniería Digital y Estrategia de Captación",
-    description: "Webs de alto impacto y consultoría estratégica para captar más clientes. De Vic al mundo.",
+    title: "UtiLiX | Diseño Web Vic & Osona | Ingeniería de Captación",
+    description: "Webs de alto impacto y consultoría estratégica para captar más clientes en Osona y toda España.",
     images: ["/og-image.jpg"], 
     creator: "@utilix"
   },
   openGraph: {
-    title: "UtiLiX | Diseño Web en Vic & Ingeniería de Conversión",
-    description: "Diseño web de autor y auditorías gratuitas. Detectamos qué bloquea tu crecimiento y lo solucionamos con tecnología Next.js de vanguardia.",
+    title: "UtiLiX | Diseño Web en Vic y Osona | Ingeniería de Conversión",
+    description: "Diseño web de autor y auditorías gratuitas. Detectamos qué bloquea tu crecimiento en Osona y lo solucionamos con Next.js.",
     url: 'https://utilix.es',
     siteName: 'UtiLiX',
     locale: 'es_ES',
@@ -104,7 +118,7 @@ export const metadata: Metadata = {
       url: '/og-image.jpg', 
       width: 1200, 
       height: 630, 
-      alt: 'UtiLiX - Auditoría y Diseño Web Profesional en Vic' 
+      alt: 'UtiLiX - Auditoría y Diseño Web Profesional en Vic y Osona' 
     }],
   },
   robots: {
