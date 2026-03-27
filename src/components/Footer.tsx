@@ -102,12 +102,12 @@ const Footer = () => {
               </span>
             </motion.div>
             
-            <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-[950] leading-[0.85] tracking-tighter uppercase text-white mb-6 italic">
-              UtiLiX<span className="text-[#00ff9d] not-italic">.</span>STUDIO
+            <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-[950] leading-[0.85] tracking-tighter text-white mb-6 italic">
+              UtiLiX<span className="text-[#00ff9d] not-italic">.</span>es
             </h2>
             
             <p className="text-white/40 max-w-md text-lg leading-relaxed font-light italic mb-12">
-              Transformamos la presencia digital en autoridad indiscutible. <br />
+              Utilix | Diseño web estratégico para negocios que quieren ser la referencia en su sector. <br />
               <span className="text-white/80 not-italic font-medium">Introduce tu dominio para iniciar el análisis.</span>
             </p>
 
@@ -222,7 +222,7 @@ const Footer = () => {
               <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20">Directo</h3>
               <div className="group">
                 <a href="mailto:info@utilix.es" className="block space-y-2">
-                  <span className="text-[9px] text-[#00ff9d] block font-mono uppercase tracking-[0.3em] opacity-50 group-hover:opacity-100 transition-opacity">Protocolo_Email</span>
+                  <span className="text-[9px] text-[#00ff9d] block font-mono uppercase tracking-[0.3em] opacity-50 group-hover:opacity-100 transition-opacity">Email</span>
                   <span className="text-xs text-white/60 group-hover:text-white transition-colors font-mono break-all">info@utilix.es</span>
                 </a>
               </div>
@@ -233,8 +233,8 @@ const Footer = () => {
         {/* FOOTER BOTTOM */}
         <div className="flex flex-col md:flex-row justify-between items-center border-t border-white/5 pt-10 gap-8">
           <div className="flex items-center gap-6">
-            <p className="text-[9px] text-white/20 font-bold tracking-[0.3em] uppercase font-mono">
-              © {currentYear} UTILIX STUDIO // DISEÑO DE ALTA AUTORIDAD
+            <p className="text-[10px] text-white/20 font-bold tracking-[0.3em] font-mono">
+              © {currentYear} UtiLiX | DISEÑO DE AUTORIDAD
             </p>
           </div>
           
@@ -243,7 +243,7 @@ const Footer = () => {
               <Link 
                 key={item}
                 href={`/legal/${item.toLowerCase().replace(' ', '-')}`} 
-                className="text-[9px] text-white/30 hover:text-[#00ff9d] transition-all font-bold tracking-[0.2em] uppercase"
+                className="text-[10px] text-white/30 hover:text-[#00ff9d] transition-all font-bold tracking-[0.2em] uppercase"
               >
                 {item}
               </Link>

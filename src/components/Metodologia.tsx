@@ -6,18 +6,18 @@ import { useEffect, useState, useRef } from "react";
 const METODOS = [
   {
     id: "01",
-    titulo: "Análisis de Distinción",
-    descripcion: "Estudiamos tu sector para identificar dónde la competencia se vuelve genérica. No buscamos errores, buscamos las grietas donde tu marca puede imponer su propio estándar de liderazgo."
+    titulo: "Radiografía de tu sector",
+    descripcion: "Antes de diseñar nada, analizamos cómo se presenta tu competencia en Osona y dónde están dejando huecos. No suposiciones — datos reales de lo que funciona en tu mercado concreto."
   },
   {
     id: "02",
-    titulo: "Diseño de Autoridad",
-    descripcion: "Construimos una presencia digital que comunica éxito sin necesidad de palabras. Un lenguaje visual de alta gama diseñado para proyectar confianza, solvencia y exclusividad absoluta."
+    titulo: "Diseño que posiciona",
+    descripcion: "Construimos una presencia digital que comunica exactamente lo que tu cliente ideal necesita ver para elegirte. No tendencias genéricas — una identidad construida sobre lo que te hace diferente."
   },
   {
     id: "03",
-    titulo: "Posicionamiento de Élite",
-    descripcion: "Activamos tu nueva identidad asegurando que cada punto de contacto con el cliente sea una reafirmación de tu estatus. Transformamos tu imagen en tu activo comercial más poderoso."
+    titulo: "Entrega y activación",
+    descripcion: "Tu web nueva no es el final. Te entregamos con todo listo para funcionar: velocidad, SEO local, analítica y los primeros 30 días de soporte incluidos."
   }
 ];
 
@@ -124,17 +124,16 @@ export default function Metodologia() {
       >
         <div className="flex flex-col items-center text-center pt-0 mt-0 mb-12">
           <span className="text-utilix-green/60 font-mono text-[10px] tracking-[0.8em] uppercase border-x border-white/10 px-6 py-1 mb-6 mt-0">
-            El Proceso Maestra
+            Cómo trabajamos
           </span>
           <h2 className="text-[clamp(1.8rem,5vw,4rem)] font-[950] leading-[0.9] tracking-tighter uppercase text-white/90 mb-4 italic">
-            DEFINIR EL <br />
+           Así trabajamos para  <br />
             <span className="italic font-light text-transparent bg-clip-text bg-gradient-to-r from-utilix-violet via-white to-utilix-green bg-[length:200%_200%] animate-gradient-slow">
-              NUEVO ESTÁNDAR.
+              que tu negocio crezca.
             </span>
           </h2>
-          <p className="max-w-2xl text-white/40 text-lg md:text-xl font-light leading-relaxed">
-            Un camino trazado para líderes que no aceptan pasar desapercibidos. 
-            Redefinimos tu impacto visual para que tu autoridad sea indiscutible desde el primer segundo.
+          <p className="max-w-1xl text-white/40 text-lg md:text-xl font-light leading-relaxed">
+            Sin reuniones infinitas. Sin sorpresas. Un proceso claro desde el primer día.
           </p>
         </div>
 
@@ -152,7 +151,7 @@ export default function Metodologia() {
               className="relative flex items-center justify-center bg-black text-white px-12 py-6 font-bold uppercase tracking-[0.4em] text-[10px] overflow-hidden"
             >
               <span className="relative z-10 group-hover:text-black transition-colors duration-500">
-                Explorar Soluciones de Alto Valor
+                Explorar Soluciones 
               </span>
             </a>
           </div>

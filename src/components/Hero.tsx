@@ -51,7 +51,7 @@ export default function Hero() {
   if (!mounted) return <div className="min-h-screen bg-[#030303]" />;
 
   const expoEase = [0.19, 1, 0.22, 1];
-  const descriptionText = "CREAMOS MARCAS QUE DOMINAN SU SECTOR POR SU IMPACTO VISUAL. DISEÑAMOS TU AUTORIDAD DESDE EL PRIMER SEGUNDO PARA QUE TU ÚNICA COMPETENCIA SEAS TÚ MISMO.";
+  const descriptionText = "Diseñamos presencias digitales para negocios que quieren ser la referencia de su sector — no una opción más en Google.";
 
   return (
     <section 
@@ -101,7 +101,7 @@ export default function Hero() {
           className="mb-8 md:mb-12"
         >
           <span className="text-utilix-green/60 font-mono text-[9px] md:text-[11px] tracking-[0.8em] uppercase border-x border-white/10 px-6 py-1">
-            Visual Authority & Premium Design
+            Autoridad Visual | Diseños Premium 
           </span>
         </motion.div>
 
@@ -111,9 +111,10 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.4, ease: expoEase as any }}
           className="text-[clamp(2.2rem,8.5vw,8rem)] font-[1000] leading-[0.9] md:leading-[0.82] tracking-tighter uppercase text-white mb-10 md:mb-14" 
         >
-          SÉ EL REFERENTE <br />
+         
+          Tu web actual le está costando <br />
           <span className="italic font-light text-transparent bg-clip-text bg-gradient-to-r from-utilix-violet via-white to-utilix-green bg-[length:200%_200%] animate-[gradient-slow_8s_ease_infinite]">
-            DE TU SECTOR.
+            clientes a tu negocio.
           </span>
         </motion.h1>
 
@@ -148,7 +149,7 @@ export default function Hero() {
             className="relative flex items-center justify-center bg-black text-white px-10 md:px-16 py-6 md:py-7 rounded-none font-black uppercase tracking-[0.5em] text-[10px] md:text-[13px] overflow-hidden transition-all"
           >
             <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
-              Empezar mi transformación
+              Quiero ver dónde estoy perdiendo clientes
             </span>
             <motion.div
               variants={{ hover: { y: 0 } }}

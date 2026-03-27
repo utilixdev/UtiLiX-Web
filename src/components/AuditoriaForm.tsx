@@ -6,7 +6,7 @@ import { useState } from "react";
 export default function AuditoriaForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-  const inputStyle = "w-full bg-transparent border-b border-white/10 py-3 text-[#00ff9d] focus:outline-none focus:border-[#00ff9d] transition-colors duration-500 placeholder:text-white/10 font-medium tracking-widest uppercase text-sm";
+  const inputStyle = "w-full bg-transparent border-b border-white/10 py-3 text-[#00ff9d] focus:outline-none focus:border-[#00ff9d] transition-colors duration-500 placeholder:text-white/30 font-medium tracking-widest uppercase text-sm";
   const labelStyle = "block text-[9px] uppercase tracking-[0.4em] text-[#00ff9d]/70 mb-1 font-bold";
 
   // SVG para la flecha del select (en sustitución del styled-jsx)
@@ -62,15 +62,14 @@ export default function AuditoriaForm() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-[clamp(1.8rem,5vw,4rem)] font-[950] leading-[0.9] tracking-tighter uppercase text-white/90 mb-4 italic">
-            Hablemos de <br />
+          <h2 className="text-[clamp(1.8rem,5vw,5rem)] font-[950] leading-[0.9] tracking-tighter uppercase text-white/90 mb-4 italic">
+            ¿Tu web actual refleja  <br />
             <span className="italic font-light text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-white to-emerald-400 bg-[length:200%_200%] animate-[gradient_8s_ease_infinite]">
-              tu negocio.
+              el valor de tu negocio?
             </span>
           </h2>
-          <p className="text-white/40 font-medium text-[10px] md:text-xs tracking-[0.3em] uppercase max-w-xl mx-auto leading-relaxed">
-            Analizaremos tu situación actual para decirte exactamente cómo pasar al siguiente nivel.
-          </p>
+          <p className="text-white/40 font-medium text-[9px] md:text-xs tracking-[0.3em] uppercase max-w-xl mx-auto leading-relaxed">
+          Si la respuesta es no, podemos hacer algo al respecto. Cuéntanos tu situación — sin compromiso, sin plantillas, sin perder el tiempo.          </p>
         </motion.div>
 
         <motion.form 
@@ -79,7 +78,7 @@ export default function AuditoriaForm() {
         >
           <div className="relative">
             <label className={labelStyle}>Nombre *</label>
-            <input name="nombre" type="text" placeholder="Ej: Dr. García" className={inputStyle} required />
+            <input name="nombre" type="text" placeholder="Tu nombre" className={inputStyle} required />
           </div>
 
           <div className="relative">
@@ -94,7 +93,7 @@ export default function AuditoriaForm() {
 
           <div className="relative">
             <label className={labelStyle}>Teléfono *</label>
-            <input name="telefono" type="tel" placeholder="600 000 000" className={inputStyle} required />
+            <input name="telefono" type="tel" placeholder="123 456 789" className={inputStyle} required />
           </div>
 
           <div className="relative md:col-span-2">
@@ -111,7 +110,7 @@ export default function AuditoriaForm() {
                   backgroundSize: '1.2em'
                 }}
               >
-                <option value="" className="bg-black text-white/30 italic text-xs">Selecciona una opción</option>
+                <option value="" className="bg-black text-white/30 italic text-xs">Cuéntanos brevemente qué tienes ahora y qué quieres conseguir</option>
                 <option value="Imagen y Autoridad" className="bg-black text-white">Mejorar mi imagen y ganar autoridad</option>
                 <option value="Web" className="bg-black text-white">Nueva página web (más moderna y rápida)</option>
                 <option value="Plan Completo" className="bg-black text-white">Plan completo: Imagen + Web + Captación</option>
@@ -143,7 +142,7 @@ export default function AuditoriaForm() {
                   {status === 'loading' && 'Enviando Protocolo...'}
                   {status === 'success' && '✓ Transmisión Éxito'}
                   {status === 'error' && 'Error - Reintentar'}
-                  {status === 'idle' && 'Solicitar Auditoría'}
+                  {status === 'idle' && 'Quiero que analicéis mi caso'}
                 </span>
 
                 {status === 'idle' && (

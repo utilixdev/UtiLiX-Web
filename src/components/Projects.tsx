@@ -7,52 +7,29 @@ import { useRef, useState, useEffect } from 'react';
 const PROJECTS = [
   {
     id: 1,
-    title: "Vanguard Nexus",
-    category: "Liderazgo Digital",
-    description: "El epicentro de nuestra visión. Una plataforma diseñada para dominar el mercado con una presencia impecable.",
+    title: "Clínica de Autor",
+    category: "Clínicas de Autor",
+    description: "Elevamos la percepción del sector salud hacia un entorno de exclusividad y confianza absoluta.",
     size: "md:col-span-2 md:row-span-2 min-h-[400px] md:h-[550px]",
-    color: "from-utilix-green/20",
-    icon: <Shield className="w-8 h-8 text-utilix-green/40" />,
-    label: "ESTÁNDAR_DE_MARCA",
-    href: "https://utilix.es",
-    image: "/imagenes/nexus-bg.png" 
+    color: "from-utilix-violet/20",
+    icon: <Zap className="w-6 h-6 text-utilix-violet/40" />,
+    label: "CLÍNICA PREMIUM",
+    href: "https://utilixstudio.com",
+    image: "/imagenes/clinica-bg.jpg" 
   },
   {
     id: 2,
-    title: "Health & Elite",
-    category: "Clínicas de Autor",
-    description: "Elevamos la percepción del sector salud hacia un entorno de exclusividad y confianza absoluta.",
-    size: "md:col-span-1 md:row-span-1 min-h-[300px] md:h-full",
-    color: "from-utilix-violet/20",
-    icon: <Zap className="w-6 h-6 text-utilix-violet/40" />,
-    label: "VISIÓN_PREMIUM",
-    href: "https://utilixstudio.com/campanya",
-    image: "/imagenes/clinica-bg.png" 
-  },
-  {
-    id: 3,
-    title: "Global Legacy",
-    category: "E-commerce de Autor",
-    description: "Narrativa visual donde cada producto se presenta como una pieza de colección única.",
-    size: "md:col-span-1 md:row-span-2 min-h-[350px] md:h-full",
-    color: "from-white/10",
-    icon: <Globe className="w-6 h-6 text-white/20" />,
-    label: "LEGADO_DIGITAL",
-    href: "#",
-    image: "/legacy-bg.jpg"
-  },
-  {
-    id: 4,
-    title: "Neural Core",
-    category: "Inteligencia Estratégica",
-    description: "Sistemas que anticipan las necesidades del cliente, creando un vínculo de autoridad indiscutible.",
+    title: "Utilix",
+    category: "Liderazgo Digital",
+    description: "El epicentro de nuestra visión. Una plataforma diseñada para dominar el mercado con una presencia impecable.",
     size: "md:col-span-1 md:row-span-1 min-h-[300px] md:h-full",
     color: "from-utilix-green/20",
-    icon: <Cpu className="w-6 h-6 text-utilix-green/40" />,
-    label: "ALTA_ESTRATEGIA",
-    href: "#",
-    image: "/ai-bg.jpg"
-  }
+    icon: <Shield className="w-8 h-8 text-utilix-green/40" />,
+    label: "Nuestro Estándard",
+    href: "https://utilix.es",
+    image: "/imagenes/nexus-bg.jpg" 
+  },
+  
 ];
 
 export default function Projects() {
@@ -106,7 +83,7 @@ export default function Projects() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
             <span className="text-utilix-green font-mono text-[10px] tracking-[0.6em] uppercase mb-6 block">
-              Selección_de_Éxitos_2026
+              Nuestra Selección
             </span>
             <h2 className="text-[clamp(1.8rem,5vw,4rem)] font-[950] leading-[0.9] tracking-tighter uppercase text-white/90 mb-4 italic">
               CASOS DE <br />

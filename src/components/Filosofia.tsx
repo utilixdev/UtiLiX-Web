@@ -96,9 +96,9 @@ export default function Filosofia() {
               transition={{ duration: 1.2, ease: expoEase as any }}
               className="text-[clamp(1.8rem,5vw,4rem)] font-[950] leading-[0.9] tracking-tighter uppercase text-white/90 mb-4 italic"
             >
-              <span className="block mb-4">TRANSFORMAMOS TU NOMBRE EN UN</span>
+              <span className="block mb-4">No hacemos webs.</span>
               <span className="relative inline-block italic font-light text-transparent bg-clip-text bg-gradient-to-r from-utilix-violet via-white to-utilix-green bg-[length:200%_200%] animate-[gradient-slow_8s_ease_infinite] pb-1">
-                SÍMBOLO DE PODER.
+                Construimos el activo comercial más importante de tu negocio.
               </span>
             </motion.h2>
 
@@ -110,7 +110,10 @@ export default function Filosofia() {
                 transition={{ duration: 1, delay: 0.1, ease: expoEase as any }}
                 className="text-lg md:text-xl text-white/50 font-light leading-relaxed"
               >
-                No buscamos que tu marca simplemente sea vista; buscamos que sea <strong className="text-white font-medium">respetada</strong>. Diseñamos para aquellos que entienden que el liderazgo comienza por una imagen que no deja lugar a dudas.
+                Hay dos tipos de presencia digital: <strong className="text-white font-medium"> LA QUE EXISTE Y LA QUE VENDE. </strong> 
+                La mayoría de negocios tienen la primera. Una web que está, que se ve, pero que no genera nada.
+                Nosotros trabajamos para aquellos que ya entienden que su imagen online es una decisión de negocio, no de diseño. Que saben que perder un cliente sale más caro que invertir en una web que los convierta.
+                
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 15 }}
@@ -119,7 +122,7 @@ export default function Filosofia() {
                 transition={{ duration: 1, delay: 0.2, ease: expoEase as any }}
                 className="text-lg md:text-xl text-white/50 font-light leading-relaxed"
               >
-                Tu autoridad digital no es un detalle, es tu <strong className="text-white font-medium">mayor activo</strong>. Creamos experiencias que separan a los referentes de los seguidores, proyectando exclusividad desde el primer impacto visual.
+                No trabajamos con plantillas. <strong className="text-white font-medium uppercase"> Diseñamos tu negocio para que se vea, se entienda y genere clientes. </strong> <br/><br/>Si quieres construir algo así, HABLAMOS.
               </motion.p>
             </div>
           </div>
@@ -133,36 +136,36 @@ export default function Filosofia() {
               
               <div>
                 <h4 className="text-utilix-green font-mono text-[10px] tracking-widest uppercase mb-12 opacity-60">
-                  Valores de Marca // 2026
+                  Valores de Marca
                 </h4>
                 
                 <ul className="space-y-10 text-xs md:text-[13px] tracking-[0.2em] uppercase text-white/70 font-light">
                   <li className="flex items-start gap-4 group">
                     <span className="text-utilix-violet font-black group-hover:text-utilix-green transition-colors">01</span>
                     <div className="space-y-2">
-                      <span className="block text-white font-medium">Impacto Inmediato</span>
-                      <span className="block text-[9px] text-white/30 lowercase font-mono tracking-normal">Diseño que comunica éxito al instante.</span>
+                      <span className="block text-white font-medium">Primera impresión | </span>
+                      <span className="block text-[11px] text-white/30 lowercase font-mono tracking-normal"> Primera impresión que no se recupera. </span>
                     </div>
                   </li>
                   <li className="flex items-start gap-4 group">
                     <span className="text-utilix-violet font-black group-hover:text-utilix-green transition-colors">02</span>
                     <div className="space-y-2">
-                      <span className="block text-white font-medium">Autoridad Visual</span>
-                      <span className="block text-[9px] text-white/30 lowercase font-mono tracking-normal">Posicionamiento premium sin palabras.</span>
+                      <span className="block text-white font-medium">8 segundos | </span>
+                      <span className="block text-[11px] text-white/30 lowercase font-mono tracking-normal"> Tu cliente decide en 8 segundos. Diseñamos para ganar esos 8 segundos. </span>
                     </div>
                   </li>
                   <li className="flex items-start gap-4 group">
                     <span className="text-utilix-violet font-black group-hover:text-utilix-green transition-colors">03</span>
                     <div className="space-y-2">
-                      <span className="block text-white font-medium">Exclusividad</span>
-                      <span className="block text-[9px] text-white/30 lowercase font-mono tracking-normal">Estrategias para captar clientes de alto valor.</span>
+                      <span className="block text-white font-medium"> Irrepetible | </span>
+                      <span className="block text-[11px] text-white/30 lowercase font-mono tracking-normal"> Una web que tu competencia no puede copiar porque está construida sobre tu negocio real.</span>
                     </div>
                   </li>
                   <li className="flex items-start gap-4 group">
                     <span className="text-utilix-violet font-black group-hover:text-utilix-green transition-colors">04</span>
                     <div className="space-y-2">
-                      <span className="block text-white font-medium">Distancia Competitiva</span>
-                      <span className="block text-[9px] text-white/30 lowercase font-mono tracking-normal">Un desmarque radical frente al mercado actual.</span>
+                      <span className="block text-white font-medium">Sin comparación posible | </span>
+                      <span className="block text-[11px] text-white/30 lowercase font-mono tracking-normal"> Cuando alguien compare tu web con la de tu competidor, no debería haber comparación. </span>
                     </div>
                   </li>
                 </ul>
@@ -170,7 +173,7 @@ export default function Filosofia() {
 
               <div className="mt-12 pt-8 border-t border-white/5">
                 <span className="text-[9px] font-mono text-utilix-green/40 uppercase tracking-widest">
-                  Status: Liderazgo_Digital
+                  Status: Liderazgo Digital
                 </span>
               </div>
             </div>
@@ -184,7 +187,7 @@ export default function Filosofia() {
           <motion.p 
             className="relative z-10 text-utilix-green/80 font-mono text-[11px] tracking-[0.8em] md:tracking-[1em] uppercase"
           >
-            Design your authority // Define the market
+            Diseñamos tu autoridad | Definimos el mercado 
           </motion.p>
         </div>
       </motion.div>

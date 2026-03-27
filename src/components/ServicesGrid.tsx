@@ -70,12 +70,6 @@ function ServiceCard({ service, index }: { service: any, index: number }) {
         <p className="text-white/50 text-sm leading-relaxed mb-10 font-light tracking-wide group-hover:text-white/80 transition-colors">
           {service.desc}
         </p>
-        <div className="mt-auto flex items-center justify-between border-t border-white/5 pt-6">
-          <span className="text-[7px] font-mono text-white/20 tracking-[0.5em] uppercase">
-            SERVICE_ASSET_{service.id}
-          </span>
-          <div className="w-1 h-1 bg-utilix-green shadow-[0_0_8px_#00ff9d]" />
-        </div>
       </div>
     </motion.div>
   );
@@ -103,7 +97,7 @@ export default function ServicesGrid() {
           >
             <div className="w-8 h-[1px] bg-utilix-green" />
             <span className="text-utilix-green font-mono text-[10px] tracking-[0.4em] uppercase">
-              Catálogo de Activos Digitales
+              Lo que construimos para ti
             </span>
           </motion.div>
 
@@ -115,7 +109,7 @@ export default function ServicesGrid() {
           </h2>
 
           <p className="max-w-2xl text-white/40 text-lg font-light leading-relaxed">
-            Especialistas en la creación y mantenimiento de ecosistemas web en <span className="text-white">Vic y toda Osona</span>. Transformamos tecnología en rentabilidad.
+          No trabajamos por proyectos sueltos. Trabajamos con negocios que quieren construir algo duradero. <br/> <span className="text-white uppercase" >  Estos son los activos que desarrollamos: </span>
           </p>
         </div>
 
@@ -142,7 +136,9 @@ export default function ServicesGrid() {
               }}
               className="relative px-10 py-6 bg-utilix-green text-black font-black uppercase tracking-tighter text-xl transition-all duration-300 hover:bg-white hover:scale-[1.02] active:scale-[0.98]"
             >
-              Solicitar Auditoría Gratuita Osona
+              Solicitar mi auditoría gratuita
+
+
               {/* Decoración geométrica en las esquinas */}
               <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-black/20" />
               <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-black/20" />
@@ -152,8 +148,8 @@ export default function ServicesGrid() {
             <div className="absolute -bottom-2 -right-2 w-full h-full border border-utilix-green/30 -z-10 transition-transform group-hover:translate-x-1 group-hover:translate-y-1" />
           </div>
 
-          <span className="mt-8 font-mono text-[9px] text-white/30 tracking-[0.5em] uppercase">
-            [ Análisis de rendimiento sin coste · Plazas limitadas ]
+          <span className="mt-8 font-mono text-[9px] text-white/50 tracking-[0.5em] uppercase">
+            [ Sin coste · Sin compromiso ]
           </span>
         </motion.div>
 
