@@ -93,6 +93,8 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="flex items-center gap-4 border border-white/10 px-4 py-2 rounded-full bg-white/[0.03] backdrop-blur-xl"
+            aria-label="Abrir menú"
+            aria-expanded={isOpen}
           >
             <span className="text-[9px] tracking-[0.4em] uppercase text-white/60 font-mono">Menu</span>
             <div className="flex flex-col gap-1">
@@ -100,6 +102,15 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
               <span className="w-4 h-[1px] bg-white"></span>
             </div>
           </motion.button>
+        </div>
+
+        {/* SEO Link Map: Invisible para humanos, oro para Google */}
+        <div className="sr-only opacity-0 pointer-events-none absolute">
+          {navLinks.map((link) => (
+            <Link key={link.name} href={link.href || '/'}>
+              {link.name}
+            </Link>
+          ))}
         </div>
       </motion.nav>
 
