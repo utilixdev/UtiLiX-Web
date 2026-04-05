@@ -1,4 +1,4 @@
-/ ─────────────────────────────────────────────────────────────────────────────
+//─────────────────────────────────────────────────────────────────────────────
 // 3. app/proyectos/layout.tsx
 // Qué busca el cliente: "ejemplos de webs", "portfolio diseño web"
 // Intención: evaluación. El cliente quiere prueba social y ver el nivel.
