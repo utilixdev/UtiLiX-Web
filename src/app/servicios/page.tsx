@@ -445,9 +445,9 @@ function ParallaxSection() {
       {/* Texto parallax — dos líneas en direcciones opuestas */}
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 md:gap-4 pointer-events-none select-none overflow-hidden">
         <motion.p
-          style={{ x: txtX1 }}
           className="font-black uppercase text-white/[0.07] whitespace-nowrap leading-none"
-          style={{ fontSize: 'clamp(3.5rem, 10vw, 9.5rem)', x: txtX1 }}
+          style={{ fontSize: 'clamp(3.5rem, 10vw, 9.5rem)', x: txtX1 
+          }}
         >
           Osona · Vic · Manlleu · Torelló · Granollers · Barcelona · Cataluña · España ·
         </motion.p>
