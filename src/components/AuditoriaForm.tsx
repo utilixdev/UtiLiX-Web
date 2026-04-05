@@ -139,10 +139,10 @@ export default function AuditoriaForm() {
                 }`}
               >
                 <span className={`relative z-10 block transition-colors duration-500 ${status === 'idle' ? 'group-hover:text-white' : ''}`}>
-                  {status === 'loading' && 'Enviando Protocolo...'}
-                  {status === 'success' && '✓ Transmisión Éxito'}
+                  {status === 'loading' && 'Enviando...'}
+                  {status === 'success' && '✓ Enviado!'}
                   {status === 'error' && 'Error - Reintentar'}
-                  {status === 'idle' && 'Quiero que analicéis mi caso'}
+                  {status === 'idle' && 'SOLICITAR AUDITORÍA GRATUITA'}
                 </span>
 
                 {status === 'idle' && (
