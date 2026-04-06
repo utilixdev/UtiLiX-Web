@@ -84,8 +84,14 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
         className="fixed top-0 w-full z-[100] px-6 py-6 md:px-12 backdrop-blur-md"
       >
         <div className="max-w-[1800px] mx-auto flex justify-between items-center">
-          <Link href="/" className="text-xl font-black tracking-[-0.05em] italic cursor-pointer">
-            UTILIX<span className="text-white/20">.</span>
+          {/* --- LOGO INSERTADO AQUÍ --- */}
+          <Link href="/" className="cursor-pointer">
+            <motion.img 
+              src="/imagenes/logo.png" 
+              alt="Utilix Logo"
+              whileHover={{ scale: 1.02 }}
+              className="h-20 md:h-22 w-auto object-contain"
+            />
           </Link>
 
           <motion.button
