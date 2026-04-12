@@ -39,6 +39,15 @@ export default function AuditoriaForm() {
       });
 
       if (response.status === 200 || response.ok) {
+        // DISPARO DE CONVERSIÓN GOOGLE ADS
+        if (typeof window !== 'undefined' && (window as any).gtag) {
+          (window as any).gtag('event', 'conversion', {
+            'send_to': 'AW-942717987/N4ZEKP4wsED', // Sustituye 'conversion_id_aqui' por el ID que te da Google si es distinto
+            'value': 1.0,
+            'currency': 'EUR'
+          });
+        }
+
         setStatus('success');
         const form = e.target as HTMLFormElement;
         form.reset();
