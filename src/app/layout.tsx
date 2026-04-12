@@ -2,6 +2,7 @@ import { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Montserrat } from "next/font/google";
 import RootLayoutClient from "./RootLayoutClient";
+import Script from "next/script";
 
 const font = Montserrat({
   subsets: ["latin"],
@@ -284,6 +285,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es" className={`scroll-smooth ${font.variable}`}>
       <head>
+        {/* Google Tag (gtag.js) - Google Ads */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-942717987"
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads-tag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-942717987');
+          `}
+        </Script>
+
         {/* JSON-LD — datos estructurados para Google Knowledge Panel y Local Pack */}
         <script
           type="application/ld+json"
