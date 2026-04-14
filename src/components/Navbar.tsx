@@ -81,7 +81,7 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
     <>
       <motion.nav
         style={{ y: navY, opacity: navOpacity }}
-        className="fixed top-0 w-full z-[100] px-6 py-6 md:px-12 backdrop-blur-md"
+        className="fixed top-0 w-full z-[100] px-6 py-2 md:px-12 backdrop-blur-md"
       >
         <div className="max-w-[1800px] mx-auto flex justify-between items-center">
           {/* --- LOGO INSERTADO AQUÍ --- */}
@@ -90,7 +90,7 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
               src="/imagenes/logo.png" 
               alt="Utilix Logo"
               whileHover={{ scale: 1.02 }}
-              className="h-20 md:h-22 w-auto object-contain"
+              className="h-16 md:h-18 w-auto object-contain"
             />
           </Link>
 

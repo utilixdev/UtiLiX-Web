@@ -176,7 +176,7 @@ const Footer = () => {
           {/* COLUMNAS DE LINKS */}
           <div className="lg:col-span-6 grid grid-cols-2 md:grid-cols-3 gap-12">
             <div className="space-y-8">
-              <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20">Mapa_Sitio</h3>
+              <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20">Mapa del Sitio</h3>
               <ul className="space-y-4">
                 {[
                   { name: 'Legado', id: 'proyectos' },
@@ -193,11 +193,21 @@ const Footer = () => {
                     </button>
                   </li>
                 ))}
+                {/* AÑADIDO: ENLACE AL BLOG */}
+                <li>
+                  <Link 
+                    href="/blog"
+                    className="text-[11px] text-white/40 hover:text-[#00ff9d] font-bold uppercase tracking-widest transition-colors flex items-center gap-2 group"
+                  >
+                    <span className="w-0 group-hover:w-3 h-px bg-[#00ff9d] transition-all" />
+                    Blog
+                  </Link>
+                </li>
               </ul>
             </div>
 
             <div className="space-y-8">
-              <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#00ff9d]/60">Ecosistema</h3>
+              <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#00ff9d]/60">Redes Sociales</h3>
               <ul className="space-y-4">
                 {[
                   { name: 'Instagram', url: 'https://www.instagram.com/utilix.tech/', icon: <Instagram size={12} /> },

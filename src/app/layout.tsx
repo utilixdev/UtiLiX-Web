@@ -127,8 +127,8 @@ const jsonLd = {
   // sameAs — ayuda a Google a construir tu entidad de marca.
   // Añade todas las URLs donde Utilix tiene presencia.
   "sameAs": [
-    "https://www.instagram.com/utilix.tech/",
-    "https://wa.me/34679958614"
+    "https://www.instagram.com/utilixstudio/",
+    "https://wa.me/34711556444"
     // Cuando tengas LinkedIn, Facebook o Google My Business URL, añádelos aquí
   ]
 };

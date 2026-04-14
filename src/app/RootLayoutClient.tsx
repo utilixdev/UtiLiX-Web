@@ -6,6 +6,10 @@ import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
 import CookieBanner from "@/components/CookieBanner";
 
+// 1. IMPORTA TUS COMPONENTES GLOBALES
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
 export default function RootLayoutClient({ 
   children, 
   fontClassName 
@@ -35,6 +39,9 @@ export default function RootLayoutClient({
         md:cursor-none
       `}
     >
+      {/* 2. NAVBAR GLOBAL (Se mostrará en todas las páginas) */}
+      <Navbar />
+
       {mounted && (
         <div key={pathname + "-wrapper"}>
           {!isSimplePage && <ScrollProgress />}
@@ -46,6 +53,9 @@ export default function RootLayoutClient({
       <main key={pathname} className="relative block bg-[#030303] w-full overflow-x-hidden">
         {children}
       </main>
+
+      {/* 3. FOOTER GLOBAL */}
+      <Footer />
 
       <style dangerouslySetInnerHTML={{ __html: `
         body, html {

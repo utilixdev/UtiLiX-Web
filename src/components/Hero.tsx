@@ -109,7 +109,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: expoEase as any }}
-          className="text-[clamp(2.2rem,8.5vw,8rem)] font-[1000] leading-[0.9] md:leading-[0.82] tracking-tighter uppercase text-white mb-10 md:mb-14" 
+          className="text-[clamp(2rem,8vw,7.5rem)] font-[1000] leading-[0.9] md:leading-[0.82] tracking-tighter uppercase text-white mb-10 md:mb-12" 
         >
          
           Tu web actual le está costando <br />
