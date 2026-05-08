@@ -911,7 +911,7 @@ export default function ServiciosPage() {
                       <div className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.19,1,0.22,1]" />
                     </button>
                     <a
-                      href="tel:+34600000000"
+                      href="tel:+34711556444"
                       className="px-7 py-4 border border-white/10 text-white/45 font-bold uppercase tracking-[0.16em] text-[10px] rounded-xl hover:border-white/30 hover:text-white transition-all duration-300 text-center"
                     >
                       Llámanos directo
@@ -978,8 +978,6 @@ export default function ServiciosPage() {
             <AuditoriaForm />
           </div>
         </main>
-
-        <Footer />
 
         <style jsx global>{`
           @keyframes gradient {
