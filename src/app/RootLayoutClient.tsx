@@ -5,8 +5,7 @@ import { usePathname } from 'next/navigation';
 import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
 import CookieBanner from "@/components/CookieBanner";
-
-// 1. IMPORTA TUS COMPONENTES GLOBALES
+import { WhatsAppFloat } from '@/components/ui/WhatsAppFloat';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -106,6 +105,7 @@ export default function RootLayoutClient({
           border-radius: 10px;
         }
       `}} />
+      <WhatsAppFloat />
     </body>
   );
 }
