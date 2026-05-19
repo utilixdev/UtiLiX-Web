@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Zap, Shield, Globe, Cpu } from "lucide-react";
+import { ArrowUpRight, Sparkles, Rocket, Flame, Cpu, Orbit, Brain, Gem, Radar, Waves, Shield, Globe, Gauge, Wand2, Layers3, Workflow,} from "lucide-react";
 import { useRef, useState, useEffect } from 'react';
 
 const PROJECTS = [
@@ -10,24 +10,36 @@ const PROJECTS = [
     title: "Clínica de Autor",
     category: "Clínicas de Autor",
     description: "Elevamos la percepción del sector salud hacia un entorno de exclusividad y confianza absoluta.",
-    size: "md:col-span-2 md:row-span-2 min-h-[400px] md:h-[550px]",
+    size: "md:col-span-1 md:row-span-1 min-h-[400px] md:h-[550px]",
     color: "from-utilix-violet/20",
-    icon: <Zap className="w-6 h-6 text-utilix-violet/40" />,
-    label: "CLÍNICA PREMIUM",
+    icon: <Orbit className="w-6 h-6 text-utilix-violet/40" />,
+    label: "Clínica premium",
     href: "https://utilixstudio.com",
     image: "/imagenes/clinica-bg.jpg" 
   },
   {
     id: 2,
-    title: "Utilix",
+    title: "Web Corporativa",
     category: "Liderazgo Digital",
     description: "El epicentro de nuestra visión. Una plataforma diseñada para dominar el mercado con una presencia impecable.",
-    size: "md:col-span-1 md:row-span-1 min-h-[300px] md:h-full",
+    size: "md:col-span-1 md:row-span-1 min-h-[400px] md:h-[550px]",
     color: "from-utilix-green/20",
-    icon: <Shield className="w-8 h-8 text-utilix-green/40" />,
+    icon: <Sparkles className="w-6 h-6 text-utilix-green/40" />,
     label: "Nuestro Estándard",
     href: "https://utilix.es",
-    image: "/imagenes/nexus-bg.jpg" 
+    image: "/imagenes/utilix.jpg" 
+  },
+  {
+    id: 3,
+    title: "Sistemas de automatizaciones",
+    category: "Sistemas de automatizaciones",
+    description: "Creación de sistemas de automatización de citas para el sector de la salud.",
+    size: "md:col-span-1 md:row-span-1 min-h-[300px] md:h-[550px]",
+    color: "from-utilix-violet/20",
+    icon: <Workflow className="w-6 h-6 text-utilix-violet/40" />,
+    label: "Automatización",
+    href: "https://avoidstudio.es",
+    image: "/imagenes/avoid.png" 
   },
   
 ];
