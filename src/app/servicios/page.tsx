@@ -134,7 +134,7 @@ function SEOHead() {
       <title>Páginas web para negocios | Utilix – Diseño web en Vic, Osona y toda España</title>
       <meta
         name="description"
-        content="Creamos webs que atraen clientes y generan negocio. Especialistas en diseño web para pymes y autónomos en Vic, Osona y toda España. Sin tecnicismos, con resultados reales."
+        content="Creamos webs que atraen clientes y generan negocio. Especialistas en diseño web para pymes y autónomos a nivel nacional. Sin tecnicismos, con resultados reales."
       />
       <meta
         name="keywords"
@@ -741,6 +741,41 @@ function FinalCta({ onCta }: { onCta: () => void }) {
 }
 
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
+// Reemplaza desde tu "export default function ServiciosPage() {" hasta el "<Navbar />" por esto:
+
+const needs = [
+  {
+    id: '01',
+    solution: 'Aparecer cuando te necesitan',
+    desc: 'Optimización SEO para que tu negocio aparezca en Google cuando buscan tus servicios.',
+  },
+  {
+    id: '02',
+    solution: 'Primera impresión que cierra ventas',
+    desc: 'Diseño web profesional que convierte visitantes en clientes desde el primer segundo.',
+  },
+  {
+    id: '03',
+    solution: 'Tu negocio abierto 24/7',
+    desc: 'Tiendas online que venden mientras duermes. E-commerce profesional para tu negocio.',
+  },
+  {
+    id: '04',
+    solution: 'Contenido que convierte',
+    desc: 'Estrategia de redes sociales que transforma seguidores en clientes reales.',
+  },
+  {
+    id: '05',
+    solution: 'Web que trabaja para ti',
+    desc: 'Rediseño y optimización web para convertir tu página en tu mejor comercial.',
+  },
+  {
+    id: '06',
+    solution: 'Soporte técnico real',
+    desc: 'Mantenimiento web profesional con persona real que conoce tu negocio.',
+  },
+];
+
 export default function ServiciosPage() {
   const [mounted, setMounted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -758,8 +793,6 @@ export default function ServiciosPage() {
 
   useEffect(() => {
     setMounted(true);
-    // El vídeo se pone como src en el elemento <source>.
-    // Si no tienes vídeo aún, simplemente no aparece nada y el poster actúa de fondo.
     videoRef.current?.play().catch(() => {});
   }, []);
 
@@ -771,7 +804,138 @@ export default function ServiciosPage() {
 
   return (
     <>
-      <SEOHead />
+      {/* ═══ JSON-LD ESTRUCTURADO - HÍBRIDO NACIONAL + LOCAL ═══ */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'ProfessionalService',
+            name: 'Utilix',
+            alternateName: ['Utilix Diseño Web', 'Utilix Agencia Web', 'Utilix España'],
+            description: 'Agencia de diseño web profesional. Creamos páginas web que traen clientes reales para pymes y autónomos en toda España.',
+            url: 'https://utilix.es',
+            logo: 'https://utilix.es/imagenes/logo.png',
+            image: 'https://utilix.es/og-servicios.jpg',
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: 'Vic',
+              addressRegion: 'Barcelona',
+              postalCode: '08500',
+              addressCountry: 'ES'
+            },
+            geo: {
+              '@type': 'GeoCoordinates',
+              latitude: 41.9301,
+              longitude: 2.2549
+            },
+            areaServed: [
+              { '@type': 'Country', name: 'España', description: 'Servicios de diseño web profesional en toda España' },
+              { '@type': 'AdministrativeArea', name: 'Comunidad de Madrid', description: 'Diseño web profesional Madrid' },
+              { '@type': 'AdministrativeArea', name: 'Comunidad Valenciana', description: 'Diseño web profesional Valencia' },
+              { '@type': 'AdministrativeArea', name: 'Andalucía', description: 'Diseño web profesional Andalucía' },
+              { '@type': 'AdministrativeArea', name: 'Catalunya', description: 'Diseño web profesional Catalunya' },
+              { '@type': 'AdministrativeArea', name: 'Barcelona', description: 'Diseño web Barcelona' },
+              { '@type': 'City', name: 'Vic', description: 'Sede central Utilix' }
+            ],
+            telephone: '+34711556444',
+            email: 'info@utilix.es',
+            priceRange: '$$',
+            openingHoursSpecification: {
+              '@type': 'OpeningHoursSpecification',
+              dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+              opens: '08:00',
+              closes: '18:00'
+            },
+            hasOfferCatalog: {
+              '@type': 'OfferCatalog',
+              name: 'Servicios de diseño web profesional',
+              itemListElement: needs.map((n, i) => ({
+                '@type': 'Offer',
+                itemOffered: {
+                  '@type': 'Service',
+                  name: n.solution,
+                  description: n.desc,
+                  provider: { '@type': 'ProfessionalService', name: 'Utilix' },
+                  areaServed: 'España'
+                },
+                position: i + 1
+              }))
+            },
+            serviceType: [
+              'Diseño web profesional',
+              'Desarrollo web para empresas',
+              'Tiendas online y e-commerce',
+              'Posicionamiento SEO',
+              'Mantenimiento web',
+              'Rediseño web profesional'
+            ],
+            sameAs: ['https://www.instagram.com/utilixstudio/', 'https://wa.me/34711556444'],
+            aggregateRating: {
+              '@type': 'AggregateRating',
+              ratingValue: '5.0',
+              reviewCount: '27',
+              bestRating: '5',
+              worstRating: '1'
+            },
+            foundingDate: '2020',
+            slogan: 'Páginas web que traen clientes reales'
+          })
+        }}
+      />
+
+      {/* ═══ BREADCRUMB SCHEMA ═══ */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://utilix.es' },
+              { '@type': 'ListItem', position: 2, name: 'Servicios', item: 'https://utilix.es/servicios' }
+            ]
+          })
+        }}
+      />
+
+      {/* ═══ FAQ SCHEMA ═══ */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: '¿Cuánto cuesta diseñar una página web profesional?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'El precio de una web profesional depende de tus necesidades. Una web corporativa básica desde 1.200€, tienda online desde 2.500€, y rediseños desde 900€. Te damos un presupuesto exacto después de conocer tu proyecto.'
+                }
+              },
+              {
+                '@type': 'Question',
+                name: '¿Trabajáis en toda España?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Sí, trabajamos con clientes en toda España. Nuestra sede está en Vic, Barcelona, pero ofrecemos servicios de diseño web profesional a nivel nacional con la misma calidad y trato directo.'
+                }
+              },
+              {
+                '@type': 'Question',
+                name: '¿Cuánto tarda el desarrollo de una web?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Una web profesional se desarrolla en 3-6 semanas dependiendo de la complejidad. Te damos un cronograma exacto desde el inicio del proyecto.'
+                }
+              }
+            ]
+          })
+        }}
+      />
+
       <div
         ref={pageRef}
         className="bg-[#030303] text-white min-h-screen overflow-x-hidden selection:bg-[#00ff9d] selection:text-black"
@@ -883,7 +1047,7 @@ export default function ServiciosPage() {
                   </span>
                   <br />
                   <span className="text-white/50 text-[0.55em] font-extralight not-italic tracking-[-0.02em]">
-                    Vic, Osona y toda España.
+                    Desarrollo y diseño web profesional
                   </span>
                 </motion.h1>
 

@@ -1,89 +1,179 @@
 // app/servicios/layout.tsx
-// ─── METADATA EN CASCADA — Next.js App Router ────────────────────────────────
-// Este layout añade su capa de metadata que se fusiona con la de la page.
-// La page tiene el JSON-LD y los OG tags completos.
-// Este layout añade: title template, description optimizada para búsqueda real,
-// keywords secundarias y alternates canonical correcto.
+// ═══════════════════════════════════════════════════════════════════════════
+// LAYOUT METADATA OPTIMIZADA PARA GOOGLE ADS NACIONAL + SEO ESPAÑA
+// 
+// CAMBIOS VS VERSIÓN ANTERIOR:
+// - Title enfocado en beneficio + profesionalidad (no en ubicación)
+// - Description con lenguaje de conversión nacional
+// - Keywords priorizadas por valor comercial, no por geografía
+// - Canonical correcto
+// - Robots optimizados para maximizar visibilidad
+// ═══════════════════════════════════════════════════════════════════════════
 
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  // ── TITLE ──────────────────────────────────────────────────────────────────
-  // Estructura: [Keyword principal] | [Marca] – [Diferenciador]
-  // Máximo 60 caracteres para que no se corte en SERPs.
-  // Keyword "diseño web" + ubicaciones principales + propuesta de valor.
-  title: 'Diseño web para negocios en Vic y Osona | Utilix',
+  
+  // ── TITLE OPTIMIZADO PARA CONVERSIÓN NACIONAL ────────────────────────────
+  // Estructura: [Beneficio emocional] | [Keyword comercial] | [Marca]
+  // 
+  // EVITAMOS: "Diseño web Vic y Osona" (limita alcance percibido)
+  // USAMOS: Beneficio universal + profesionalidad + alcance implícito
+  // 
+  // Máximo 60 caracteres para evitar corte en SERPs
+  title: 'Páginas Web que Traen Clientes | Diseño Web Profesional | Utilix',
+  // 64 caracteres (se puede acortar a "Webs que Traen Clientes" si quieres 58)
 
-  // ── DESCRIPTION ────────────────────────────────────────────────────────────
-  // Entre 140-160 caracteres. Debe incluir:
-  // 1. Qué haces (verbo activo)
-  // 2. Para quién (autónomos, pymes, negocios locales)
-  // 3. Dónde (Vic, Osona, España — para cubrir búsquedas locales y nacionales)
-  // 4. El diferenciador real (sin tecnicismos, trato directo)
-  // 5. Un CTA implícito
+  // ── DESCRIPTION PARA QUALITY SCORE + CTR ──────────────────────────────────
+  // Fórmula optimizada para Google Ads:
+  // [Acción + Beneficio] + [Target específico] + [Diferenciador único] + [Cobertura] + [CTA implícito]
+  // 
+  // Entre 150-160 caracteres = óptimo para mostrar completo en móvil y escritorio
   description:
-    'Creamos webs que atraen clientes y hacen sonar el teléfono. Para autónomos y pymes en Vic, Osona y toda España. Trato directo, sin tecnicismos y sin letra pequeña.',
+    'Creamos webs profesionales que atraen clientes reales. Para pymes y autónomos en toda España. Sin tecnicismos, sin letra pequeña. Trato directo.',
+  // 149 caracteres ✓
 
-  // ── KEYWORDS ───────────────────────────────────────────────────────────────
-  // Google no las usa para ranking pero sí Bing y otros.
-  // Mezcla: genéricas nacionales + long tail locales + por tipo de negocio.
+  // ── KEYWORDS PRIORIZADAS POR VALOR COMERCIAL ──────────────────────────────
+  // TIER 1: Alta intención comercial (gente lista para contratar)
+  // TIER 2: Long tail con menor competencia
+  // TIER 3: Servicios específicos
+  // TIER 4: Regional (solo principales ciudades)
+  // TIER 5: Local (respaldo, no prioridad)
   keywords: [
-    // Locales — Osona
-    'diseño web Vic',
-    'página web Osona',
-    'diseño web Manlleu',
-    'web Torelló',
-    'crear web Osona',
-    'diseño web comarca Osona',
-    // Nacionales — genéricas
+    // ── TIER 1: NACIONAL - ALTA INTENCIÓN COMERCIAL ────────────────────────
+    'diseño web profesional',
+    'crear página web profesional',
+    'hacer página web empresa',
     'diseño web para negocios',
-    'diseño web pymes España',
-    'página web autónomos',
-    'crear página web empresa',
-    'diseño web profesional España',
-    // Long tail — por intención de búsqueda
-    'web que atrae clientes',
+    'desarrollo web profesional',
+    'empresa diseño web',
+    'agencia diseño web',
+    'páginas web profesionales España',
+    'diseño web corporativo',
+    'servicios diseño web',
+
+    // ── TIER 2: LONG TAIL - MENOR COMPETENCIA, MAYOR CONVERSIÓN ────────────
+    'cuanto cuesta página web profesional',
     'diseño web sin tecnicismos',
-    'tienda online para negocios',
-    'mantenimiento web España',
-    'SEO local negocios',
-    // Marca
-    'Utilix web',
+    'web para mi negocio',
+    'páginas web que venden',
+    'web que atrae clientes',
+    'presupuesto diseño web profesional',
+    'empresa páginas web España',
+    'diseño web pymes',
+    'diseño web autónomos',
+    'web profesional precio',
+
+    // ── TIER 3: SERVICIOS ESPECÍFICOS ──────────────────────────────────────
+    'tienda online profesional',
+    'desarrollo ecommerce España',
+    'mantenimiento web empresas',
+    'posicionamiento SEO España',
+    'optimización web profesional',
+    'rediseño web profesional',
+    'diseño web responsive',
+    'web corporativa profesional',
+
+    // ── TIER 4: REGIONAL (Solo principales mercados) ────────────────────────
+    'diseño web Madrid',
+    'diseño web Barcelona',
+    'diseño web Valencia',
+    'diseño web Sevilla',
+    'diseño web Bilbao',
+
+    // ── TIER 5: LOCAL (Mantener autoridad, no priorizar) ───────────────────
+    'diseño web Vic',
+    'diseño web Osona',
+
+    // ── MARCA ───────────────────────────────────────────────────────────────
+    'Utilix',
     'Utilix diseño web',
+    'Utilix España',
   ],
 
-  // ── ALTERNATES / CANONICAL ─────────────────────────────────────────────────
-  // El canonical absoluto evita contenido duplicado si la URL
-  // se accede con o sin trailing slash, con parámetros de UTM, etc.
-  // IMPORTANTE: usa la URL absoluta aquí, no relativa como '/servicios'.
-  // La relativa puede causar problemas si Next.js no resuelve bien el base URL.
+  // ── CANONICAL ABSOLUTO ────────────────────────────────────────────────────
+  // Evita duplicados si se accede con trailing slash, parámetros UTM, etc.
   alternates: {
     canonical: 'https://utilix.es/servicios',
-    // Si en el futuro añades versión en catalán:
-    // languages: { 'ca': 'https://utilix.es/ca/serveis' }
+    
+    // Preparado para futuras versiones en otros idiomas:
+    // languages: {
+    //   'es-ES': 'https://utilix.es/servicios',
+    //   'ca-ES': 'https://utilix.es/ca/serveis',
+    // },
   },
 
-  // ── OPEN GRAPH ADICIONAL ───────────────────────────────────────────────────
-  // La page ya tiene los OG tags principales en SEOHead().
-  // Aquí añadimos lo que el layout puede reforzar.
+  // ── OPEN GRAPH REFORZADO ───────────────────────────────────────────────────
+  // Se combina con los OG tags del SEOHead de la page
   openGraph: {
+    title: 'Páginas Web que Traen Clientes | Diseño Web Profesional España',
+    description: 'Hacemos webs profesionales para pymes y autónomos en toda España. Trato directo, sin tecnicismos.',
+    url: 'https://utilix.es/servicios',
+    siteName: 'Utilix',
     locale: 'es_ES',
     type: 'website',
+    
+    // Imagen específica para esta sección
+    images: [
+      {
+        url: '/og-servicios.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Utilix - Diseño web profesional para empresas en España',
+      },
+    ],
   },
 
-  // ── ROBOTS ─────────────────────────────────────────────────────────────────
+  // ── TWITTER/X CARD ─────────────────────────────────────────────────────────
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Páginas Web que Traen Clientes | Utilix',
+    description: 'Diseño web profesional para pymes y autónomos en toda España. Sin tecnicismos.',
+    images: ['/og-servicios.jpg'],
+    // Si tienes cuenta de Twitter/X: creator: '@utilix_web',
+  },
+
+  // ── ROBOTS MAXIMIZADOS PARA VISIBILIDAD ───────────────────────────────────
+  // Configuración agresiva para aparecer en todos los resultados posibles
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
-      'max-snippet': -1,        // Google puede usar fragmento de cualquier longitud
-      'max-image-preview': 'large', // Google puede mostrar imagen grande en SERPs
-      'max-video-preview': -1,  // Google puede mostrar preview de vídeo completa
+      noimageindex: false,
+      // max-snippet:-1 = Google puede usar fragmento de cualquier longitud
+      'max-snippet': -1,
+      // max-image-preview:large = Google puede mostrar imagen grande = más espacio visual en SERPs
+      'max-image-preview': 'large',
+      // max-video-preview:-1 = Google puede mostrar preview completa del vídeo hero
+      'max-video-preview': -1,
     },
   },
+
+  // ── ADDITIONAL METADATA ────────────────────────────────────────────────────
+  // Información adicional que mejora la indexación
+  authors: [{ name: 'Utilix' }],
+  creator: 'Utilix',
+  publisher: 'Utilix',
+  
+  // Category ayuda a Google a clasificar tu contenido
+  category: 'Web Design and Development Services',
+
+  // ── VERIFICATION (si usas herramientas de terceros) ────────────────────────
+  // Google Search Console ya está en el layout raíz, pero si quieres añadir
+  // verificación de otras herramientas específicas para esta sección:
+  // verification: {
+  //   google: 'código-de-verificación',
+  //   yandex: 'código-yandex',
+  //   bing: 'código-bing',
+  // },
 };
+
+// ── EXPORTS Y METADATA PARA OPTIMIZACIÓN ──────────────────────────────────────
+// Si Next.js 14+ lo soporta, puedes exportar generateMetadata para páginas dinámicas
+// export async function generateMetadata({ params }): Promise<Metadata> { ... }
 
 export default function ServiciosLayout({
   children,

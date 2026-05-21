@@ -45,6 +45,39 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+
+    // ─── 06. SECCIÓN BLOG (Añadido para captación de leads) ──────────────────
+    // La home del blog se actualiza a menudo cada vez que subes un post.
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+
+    // ─── 07. ARTÍCULOS INDIVIDUALES DEL BLOG ─────────────────────────────────
+    // Registramos las URLs exactas de tus contenidos dinámicos.
+    // Damos prioridad 0.7 para que Google entienda que son contenidos de valor.
+    {
+      url: `${baseUrl}/blog/web-vs-instagram`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/boton-whatsapp`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/agencia-diseno-web`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    // *Nota: Cuando crees un artículo nuevo en el futuro, añádelo aquí abajo igual que estos*
+
     // --- LEGALES (Prioridad Baja para no distraer a Google) ---
     {
       url: `${baseUrl}/legal/privacidad`,
