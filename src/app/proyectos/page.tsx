@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import Link from 'next/link'; // Enrutamiento nativo y optimizado
 import { 
   ArrowUpRight, 
   Plus, 
@@ -132,10 +133,10 @@ export default function ProyectosPage() {
   if (!mounted) return <div className="bg-[#030303] min-h-screen" />;
 
   const projects = [
-    { title: "KRYPTOS_CORE", category: "Ventas Automatizadas", year: "2024", tech: "React/Go", img: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2070", impact: "Incremento del 40% en conversión" },
-    { title: "VOGUE_SYSTEM", category: "Tienda de Alto Rendimiento", year: "2024", tech: "Next/Shopify", img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070", impact: "Optimización de carga a < 1s" },
-    { title: "NEBULA_AI", category: "Automatización de Procesos", year: "2023", tech: "Python/LLM", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070", impact: "Reducción de costes operativos" },
-    { title: "URBAN_LABS", category: "Experiencia de Marca", year: "2023", tech: "WebGL/Three.js", img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070", impact: "Liderazgo en mercado local" }
+    { title: "Health", category: "Clínica premium", year: "2026", tech: "Next/Shopify", img: "../imagenes/clinica-bg.jpg", impact: "Optimización de carga a < 1s", url: "https://www.utilixstudio.com/campanya" },
+    { title: "Tech", category: "Automatización de Procesos", year: "2025", tech: "Python/LLM", img: "../imagenes/avoid.png", impact: "Reducción de costes operativos", url: "https://www.avoidstudio.es" },
+    { title: "Design", category: "Diseño web", year: "2026", tech: "React/Go", img: "../imagenes/utilix.jpg", impact: "Incremento del 40% en conversión", url: "https://www.utilix.es/" },
+    { title: "Urban", category: "Experiencia de Marca", year: "2025", tech: "WebGL/Three.js", img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070", impact: "Liderazgo en mercado local", url: "https://www.utilix.es" }
   ];
 
   return (
@@ -250,13 +251,16 @@ function ProjectItem({ project, index }: any) {
   const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.95, 1, 1, 0.95]);
   const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [60, 0, 0, -60]);
 
+  const isExternal = project.url.startsWith('http');
+
   return (
     <motion.div 
       ref={itemRef}
       style={{ opacity, scale, y }}
-      className="group relative bg-white/[0.01] border border-white/5 rounded-[40px] md:rounded-[60px] overflow-hidden flex flex-col lg:grid lg:grid-cols-12 gap-8 p-6 md:p-12 hover:border-[#00ff9d]/20 transition-all duration-700"
+      className="group relative bg-white/[0.01] border border-white/5 rounded-[40px] md:rounded-[60px] overflow-hidden flex flex-col lg:grid lg:grid-cols-12 gap-8 p-6 md:p-12 hover:border-[#00ff9d]/20 transition-all duration-700 items-center" // items-center equilibra el eje vertical si los textos son más cortos
     >
-      <div className="lg:col-span-5 flex flex-col justify-between space-y-12 relative z-10">
+      {/* Columna Izquierda: Información */}
+      <div className="lg:col-span-5 flex flex-col justify-between space-y-12 relative z-10 w-full h-full min-h-[320px] md:min-h-[450px]">
         <div className="space-y-8">
           <div className="flex items-center gap-4">
             <div className="px-3 py-1 bg-white/5 rounded-md border border-white/10">
@@ -267,7 +271,7 @@ function ProjectItem({ project, index }: any) {
             </div>
           </div>
           
-          <h3 className="text-5xl md:text-8xl font-black italic uppercase tracking-tighter group-hover:text-[#00ff9d] transition-colors duration-500 leading-[0.85]">
+          <h3 className="text-4xl md:text-7xl lg:text-8xl font-black italic uppercase tracking-tighter group-hover:text-[#00ff9d] transition-colors duration-500 leading-[0.85]">
             {project.title}
           </h3>
           
@@ -279,11 +283,24 @@ function ProjectItem({ project, index }: any) {
           </div>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-8">
           <div className="text-[11px] font-mono uppercase tracking-[0.4em] text-[#00ff9d]/60 flex items-center gap-4 group-hover:text-white transition-all">
             <Layers size={14} className="text-purple-500 animate-pulse" /> 
             {project.impact}
           </div>
+
+          <div>
+            <Link 
+              href={project.url}
+              target={isExternal ? "_blank" : "_self"}
+              rel={isExternal ? "noopener noreferrer" : undefined}
+              className="inline-flex items-center gap-2 px-6 py-3 border border-white/10 bg-white/5 text-white/80 font-mono text-[10px] uppercase tracking-[0.3em] rounded-full hover:bg-[#00ff9d] hover:text-black hover:border-[#00ff9d] transition-all duration-500 group/btn font-bold"
+            >
+              Ver_Caso_De_Estudio
+              <ArrowUpRight size={12} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform duration-300" />
+            </Link>
+          </div>
+
           <div className="flex gap-1 h-1.5 w-32">
             <div className="h-full w-1/3 bg-white/5 group-hover:bg-[#00ff9d]/40 transition-colors" />
             <div className="h-full w-1/3 bg-white/5 group-hover:bg-[#00ff9d]/20 transition-colors delay-75" />
@@ -292,36 +309,47 @@ function ProjectItem({ project, index }: any) {
         </div>
       </div>
 
-      <div className="lg:col-span-7 relative h-96 md:h-[600px] rounded-[30px] md:rounded-[50px] overflow-hidden group/img">
-        <div 
-          className="absolute inset-0 bg-cover bg-center grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" 
-          style={{ backgroundImage: `url(${project.img})` }} 
+      {/* Columna Derecha: Contenedor de Imagen Perfectamente Encuadrado */}
+      <Link 
+        href={project.url}
+        target={isExternal ? "_blank" : "_self"}
+        rel={isExternal ? "noopener noreferrer" : undefined}
+        className="lg:col-span-7 relative w-full aspect-video lg:aspect-[4/3] xl:aspect-[16/10] max-h-[550px] rounded-[24px] md:rounded-[40px] border border-white/5 bg-neutral-950 overflow-hidden group/img cursor-pointer block shadow-2xl"
+      >
+        {/* Usamos etiqueta img nativa con object-cover y object-top para priorizar la visualización de la cabecera de las webs */}
+        <img 
+          src={project.img} 
+          alt={project.title}
+          className="absolute inset-0 w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-1000 ease-[0.19,1,0.22,1]"
         />
-        <div className="absolute inset-0 bg-[#030303]/50 group-hover:bg-[#030303]/10 transition-all duration-700" />
+        
+        {/* Capa de degradado minimalista para dotar de profundidad */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#030303]/60 via-transparent to-transparent group-hover:opacity-40 transition-opacity duration-700" />
         
         {/* Efectos de escaneo técnico */}
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-30 mix-blend-overlay" />
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20 mix-blend-overlay" />
           <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-[#00ff9d] to-transparent shadow-[0_0_20px_rgba(0,255,145,0.8)] animate-scan z-20" />
-          <div className="absolute inset-y-0 left-0 w-[1px] bg-[#00ff9d]/30 shadow-[0_0_15px_rgba(0,255,145,0.3)]" />
         </div>
 
-        <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12 bg-black/80 backdrop-blur-xl border border-white/10 px-8 py-4 rounded-full flex items-center gap-5 translate-y-24 group-hover:translate-y-0 transition-transform duration-700">
+        {/* Badge inferior de ROI */}
+        <div className="absolute bottom-6 left-6 bg-black/80 backdrop-blur-xl border border-white/10 px-6 py-3 rounded-full flex items-center gap-4 translate-y-20 group-hover:translate-y-0 transition-transform duration-700 ease-[0.19,1,0.22,1]">
             <div className="relative">
               <div className="w-2.5 h-2.5 rounded-full bg-[#00ff9d]" />
               <div className="absolute inset-0 w-2.5 h-2.5 rounded-full bg-[#00ff9d] animate-ping opacity-75" />
             </div>
-            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/70">
+            <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-white/70">
               ROI_Estado: <span className="text-[#00ff9d]">Optimizado</span>
             </span>
         </div>
 
-        <div className="absolute top-8 right-8 md:top-12 md:right-12 opacity-0 group-hover:opacity-100 translate-x-12 group-hover:translate-x-0 transition-all duration-500">
-          <div className="w-16 h-16 rounded-full bg-[#00ff9d] text-black flex items-center justify-center shadow-2xl">
-            <ArrowUpRight size={28} />
+        {/* Botón flotante superior derecho */}
+        <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 translate-x-6 group-hover:translate-x-0 transition-all duration-500 ease-[0.19,1,0.22,1]">
+          <div className="w-12 h-12 rounded-full bg-[#00ff9d] text-black flex items-center justify-center shadow-2xl">
+            <ArrowUpRight size={20} />
           </div>
         </div>
-      </div>
+      </Link>
     </motion.div>
   );
 }
