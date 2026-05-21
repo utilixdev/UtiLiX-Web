@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://utilix.es';
+  const baseUrl = 'https://www.utilix.es';
 
   return [
     // 01. HOME (Prioridad Máxima)
