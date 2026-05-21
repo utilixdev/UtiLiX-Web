@@ -740,41 +740,6 @@ function FinalCta({ onCta }: { onCta: () => void }) {
   );
 }
 
-// ─── MAIN PAGE ────────────────────────────────────────────────────────────────
-// Reemplaza desde tu "export default function ServiciosPage() {" hasta el "<Navbar />" por esto:
-
-const needs = [
-  {
-    id: '01',
-    solution: 'Aparecer cuando te necesitan',
-    desc: 'Optimización SEO para que tu negocio aparezca en Google cuando buscan tus servicios.',
-  },
-  {
-    id: '02',
-    solution: 'Primera impresión que cierra ventas',
-    desc: 'Diseño web profesional que convierte visitantes en clientes desde el primer segundo.',
-  },
-  {
-    id: '03',
-    solution: 'Tu negocio abierto 24/7',
-    desc: 'Tiendas online que venden mientras duermes. E-commerce profesional para tu negocio.',
-  },
-  {
-    id: '04',
-    solution: 'Contenido que convierte',
-    desc: 'Estrategia de redes sociales que transforma seguidores en clientes reales.',
-  },
-  {
-    id: '05',
-    solution: 'Web que trabaja para ti',
-    desc: 'Rediseño y optimización web para convertir tu página en tu mejor comercial.',
-  },
-  {
-    id: '06',
-    solution: 'Soporte técnico real',
-    desc: 'Mantenimiento web profesional con persona real que conoce tu negocio.',
-  },
-];
 
 export default function ServiciosPage() {
   const [mounted, setMounted] = useState(false);
