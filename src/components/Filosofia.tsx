@@ -83,7 +83,7 @@ export default function Filosofia() {
         <div className="mb-12 flex items-center gap-4 justify-center md:justify-start">
           <div className="h-[1px] w-12 bg-utilix-green/30 hidden md:block" />
           <span className="text-utilix-green/60 font-mono text-[10px] tracking-[0.6em] uppercase">
-            El Arte de la Diferenciación
+          La diferencia está en el resultado
           </span>
         </div>
 
@@ -96,9 +96,9 @@ export default function Filosofia() {
               transition={{ duration: 1.2, ease: expoEase as any }}
               className="text-[clamp(1.8rem,5vw,4rem)] font-[950] leading-[0.9] tracking-tighter uppercase text-white/90 mb-4 italic"
             >
-              <span className="block mb-4">No hacemos webs.</span>
+              <span className="block mb-6">No diseñamos una web solo para que quede bonita.</span>
               <span className="relative inline-block italic font-light text-transparent bg-clip-text bg-gradient-to-r from-utilix-violet via-white to-utilix-green bg-[length:200%_200%] animate-[gradient-slow_8s_ease_infinite] pb-1">
-                Construimos el activo comercial más importante de tu negocio.
+                Diseñamos tu sitio web con un único objetivo: que tu teléfono no pare de sonar.
               </span>
             </motion.h2>
 
@@ -187,7 +187,7 @@ export default function Filosofia() {
           <motion.p 
             className="relative z-10 text-utilix-green/80 font-mono text-[11px] tracking-[0.8em] md:tracking-[1em] uppercase"
           >
-            Diseñamos tu autoridad | Definimos el mercado 
+            Haz que tu negocio crezca | Destaca más en Google. 
           </motion.p>
         </div>
       </motion.div>

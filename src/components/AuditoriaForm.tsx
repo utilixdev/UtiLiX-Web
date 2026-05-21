@@ -151,7 +151,7 @@ export default function AuditoriaForm() {
                   {status === 'loading' && 'Enviando...'}
                   {status === 'success' && '✓ Enviado!'}
                   {status === 'error' && 'Error - Reintentar'}
-                  {status === 'idle' && 'SOLICITAR AUDITORÍA GRATUITA'}
+                  {status === 'idle' && 'Enviar solicitud'}
                 </span>
 
                 {status === 'idle' && (

@@ -51,7 +51,7 @@ export default function Hero() {
   if (!mounted) return <div className="min-h-screen bg-[#030303]" />;
 
   const expoEase = [0.19, 1, 0.22, 1];
-  const descriptionText = "Diseñamos presencias digitales para negocios que quieren ser la referencia de su sector — no una opción más en Google.";
+  const descriptionText = "Hacemos páginas web profesionales para negocios que necesitan conseguir clientes reales por internet.";
 
   return (
     <section 
@@ -101,7 +101,8 @@ export default function Hero() {
           className="mb-8 md:mb-12"
         >
           <span className="text-utilix-green/60 font-mono text-[9px] md:text-[11px] tracking-[0.8em] uppercase border-x border-white/10 px-6 py-1">
-            Autoridad Visual | Diseños Premium 
+            Sin palabrería | Sin tecnicismos | Sin excusas
+
           </span>
         </motion.div>
 

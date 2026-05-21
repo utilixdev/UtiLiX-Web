@@ -102,14 +102,15 @@ export default function ServicesGrid() {
           </motion.div>
 
           <h2 className="text-[clamp(2rem,6vw,4.5rem)] font-black leading-[0.85] tracking-[-0.04em] uppercase text-white mb-6">
-            SOLUCIONES <br/>
+            SERVICIOS <br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-utilix-green via-white to-utilix-violet bg-[length:200%_200%] animate-gradient-slow">
-              DE ALTO IMPACTO.
+              REALES
             </span>
           </h2>
 
           <p className="max-w-2xl text-white/40 text-lg font-light leading-relaxed">
-          No trabajamos por proyectos sueltos. Trabajamos con negocios que quieren construir algo duradero. <br/> <span className="text-white uppercase" >  Estos son los activos que desarrollamos: </span>
+          No hacemos parches ni webs a medias. Nos involucramos a fondo con negocios que buscan un resultado profesional y duradero.
+           <br/> <span className="text-white uppercase" > Esto es exactamente lo que hacemos por ti: </span>
           </p>
         </div>
 
@@ -136,7 +137,7 @@ export default function ServicesGrid() {
               }}
               className="relative px-10 py-6 bg-utilix-green text-black font-black uppercase tracking-tighter text-xl transition-all duration-300 hover:bg-white hover:scale-[1.02] active:scale-[0.98]"
             >
-              Solicitar mi auditoría gratuita
+              Solicitar análisis de mi caso
 
 
               {/* Decoración geométrica en las esquinas */}

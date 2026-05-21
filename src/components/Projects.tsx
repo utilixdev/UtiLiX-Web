@@ -181,11 +181,11 @@ export default function Projects() {
 
             <div className="flex flex-col items-start">
               <span className="text-[10px] font-mono tracking-[0.5em] text-utilix-green uppercase mb-1">
-                Comienza_Tu_Viaje
+                ¿Estás preparado?
               </span>
               <span className="text-4xl font-[950] text-white uppercase tracking-tighter italic text-left leading-[0.9]">
-                REDEFINIR TU PRESENCIA <br />
-                <span className="text-white/40 group-hover:text-white transition-colors duration-500">DIGITAL.</span>
+                Lleva tu negocio  <br />
+                <span className="text-white/40 group-hover:text-white transition-colors duration-500">al siguiente nivel.</span>
               </span>
             </div>
           </button>

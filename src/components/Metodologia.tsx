@@ -7,12 +7,12 @@ const METODOS = [
   {
     id: "01",
     titulo: "Radiografía de tu sector",
-    descripcion: "Antes de diseñar nada, analizamos cómo se presenta tu competencia en Osona y dónde están dejando huecos. No suposiciones — datos reales de lo que funciona en tu mercado concreto."
+    descripcion: "Antes de diseñar nada, analizamos cómo se presenta tu competencia en el sector y dónde están dejando huecos. No suposiciones — datos reales de lo que funciona en tu mercado concreto."
   },
   {
     id: "02",
     titulo: "Diseño que posiciona",
-    descripcion: "Construimos una presencia digital que comunica exactamente lo que tu cliente ideal necesita ver para elegirte. No tendencias genéricas — una identidad construida sobre lo que te hace diferente."
+    descripcion: "Construimos una página web que comunica exactamente lo que tu cliente ideal necesita ver para elegirte. No tendencias genéricas — una identidad construida sobre lo que te hace diferente."
   },
   {
     id: "03",
