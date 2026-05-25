@@ -190,7 +190,7 @@ const jsonLd = {
 // - Señales de negocio legítimo (dirección, teléfono, horarios)
 // ──────────────────────────────────────────────────────────────────────────────
 export const metadata: Metadata = {
-  metadataBase: new URL('https://utilix.es'),
+  metadataBase: new URL('https://www.utilix.es'),
 
   title: {
     // TITLE OPTIMIZADO PARA CONVERSIÓN NACIONAL
